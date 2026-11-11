@@ -19,7 +19,7 @@ const Bar = ({ title }: { title: string }) => (
 export function HomeScreen({ img }: { img: string }) {
   return (
     <div className="h-full">
-      <Bar title="Hey, Lia" />
+      <Bar title="HikeUp" />
       <p className="display px-4 text-3xl italic">Where to this weekend?</p>
       <div className="relative mx-4 mt-3 h-36 overflow-hidden rounded-2xl">
         <img src={img} alt="" className="h-full w-full object-cover" />
