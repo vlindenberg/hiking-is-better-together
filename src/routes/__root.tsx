@@ -78,8 +78,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Trailcrew — Hiking is better together" },
-      { name: "description", content: "Trailcrew connects hikers: discover hikes, join a crew, create your own adventure." },
+      { title: "HikeUp — Hiking is better together" },
+      { name: "description", content: "HikeUp connects hikers: discover hikes, join a crew, create your own adventure." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

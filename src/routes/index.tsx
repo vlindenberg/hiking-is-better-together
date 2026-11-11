@@ -1,17 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import hero from "@/assets/hero.jpg";
-import c1 from "@/assets/community1.jpg";
-import c2 from "@/assets/community2.jpg";
-import solo from "@/assets/solo.jpg";
+import heroA from "@/assets/hikers_hillside.jpeg.asset.json";
+import c2A from "@/assets/hikers_hail.webp.asset.json";
+import soloA from "@/assets/hikers_pointing.png.asset.json";
+import c1A from "@/assets/hiking_group.png.asset.json";
+import homeA from "@/assets/summit_sunset.jpeg.asset.json";
+import detailA from "@/assets/helping_hand.png.asset.json";
+import lyingA from "@/assets/friends_lying.png.asset.json";
+const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, HomeScreen, ExploreScreen, AIScreen, CreateScreen, DetailScreen, ChatScreen } from "@/components/Phone";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Trailcrew — Hiking is better together" },
-      { name: "description", content: "Find your people, discover new trails and make every hike an adventure with Trailcrew." },
-      { property: "og:title", content: "Trailcrew — Hiking is better together" },
+      { title: "HikeUp — Hiking is better together" },
+      { name: "description", content: "Find your people, discover new trails and make every hike an adventure with HikeUp." },
+      { property: "og:title", content: "HikeUp — Hiking is better together" },
       { property: "og:description", content: "The social hiking app: discover hikes, join a crew, create your own adventure." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -72,7 +76,7 @@ function Index() {
           </h1>
           <div className="relative -mt-[4vw] grid gap-8 md:grid-cols-12">
             <div className="relative z-10 md:col-span-7 md:col-start-5">
-              <img src={hero} alt="Friends hiking together at sunset" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
+              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
               <span className="spin-slow tech absolute -left-10 -top-10 grid h-32 w-32 place-items-center rounded-full bg-lime text-center text-sm md:h-40 md:w-40">✳ meet ✳<br />your crew</span>
             </div>
             <div className="z-20 flex flex-col justify-end gap-6 md:col-span-4 md:row-start-1 md:pb-10">
@@ -94,7 +98,7 @@ function Index() {
             <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking<span className="text-orange">.</span><br /><span className="italic text-lime">Don't have</span><br />a crew?</h2>
           </div>
           <div className="reveal relative md:col-span-5">
-            <img src={solo} alt="A lone hiker on a trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
+            <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
             <div className="label absolute -bottom-6 -left-6 max-w-xs rotate-[-4deg] bg-cloud p-5 text-sm normal-case tracking-normal text-ink">
               Your friends are busy. Your group chat is silent. The mountains are waiting — and you're going alone. Again.
             </div>
@@ -141,10 +145,10 @@ function Index() {
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
         </div>
         <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
-          <Phone className="float -rotate-12 md:translate-y-16" ><HomeScreen img={c1} /></Phone>
+          <Phone className="float -rotate-12 md:translate-y-16" ><HomeScreen img={homeA.url} /></Phone>
           <Phone className="rotate-6 md:-translate-y-6"><ExploreScreen /></Phone>
           <Phone className="z-10 -rotate-3 md:scale-110"><AIScreen /></Phone>
-          <Phone className="rotate-12 md:translate-y-10"><DetailScreen img={hero} /></Phone>
+          <Phone className="rotate-12 md:translate-y-10"><DetailScreen img={detailA.url} /></Phone>
         </div>
         <div className="relative mt-10 flex flex-wrap justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
           <Phone className="-rotate-6"><CreateScreen /></Phone>
@@ -183,15 +187,15 @@ function Index() {
       <section id="crew" className="bg-cloud px-5 py-28 md:px-10">
         <h2 className="display reveal text-6xl uppercase md:text-[9vw]">Come for<br />the hike<span className="text-orange">.</span></h2>
         <div className="mt-12 grid gap-6 md:grid-cols-12">
-          <img src={c2} alt="Hikers high-fiving at a summit" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
+          <img src={c2} alt="Two friends laughing in a hailstorm" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
           <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
-            <p className="text-xl font-medium">Trailcrew isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
+            <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
             <div className="grid grid-cols-3 gap-2 text-center">
               {[["Beginners", "bg-lime"], ["Solo travellers", "bg-violet text-cloud"], ["Trail veterans", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label p-4 ${c}`}>{l}</div>)}
             </div>
           </div>
           <div className="relative md:col-span-5 md:col-start-2">
-            <img src={c1} alt="New friends sharing snacks on a mountain" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-t-full object-cover" />
+            <img src={c1} alt="A big hiking group in the forest" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-t-full object-cover" />
           </div>
           <div className="flex items-end md:col-span-6">
             <h2 className="display reveal text-6xl uppercase md:text-[8vw]"><span className="italic text-violet">Stay for</span><br />the people.</h2>
@@ -214,7 +218,7 @@ function Index() {
       </section>
 
       <footer className="flex flex-wrap items-center justify-between gap-4 bg-ink px-5 py-8 text-cloud md:px-10">
-        <span className="tech text-3xl">trailcrew</span>
+        <span className="tech text-3xl">HikeUp</span>
         <span className="label text-cloud/60">Hiking is better together · © 2026</span>
       </footer>
     </main>
