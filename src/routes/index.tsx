@@ -6,7 +6,6 @@ import soloA from "@/assets/hikers_pointing.png.asset.json";
 import c1A from "@/assets/hiking_group.png.asset.json";
 import homeA from "@/assets/summit_sunset.jpeg.asset.json";
 import detailA from "@/assets/helping_hand.png.asset.json";
-import lyingA from "@/assets/friends_lying.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, HomeScreen, ExploreScreen, AIScreen, CreateScreen, DetailScreen, ChatScreen } from "@/components/Phone";
 
@@ -56,7 +55,7 @@ function Index() {
       {/* NAV */}
       <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-4 md:px-10">
         <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xl text-cloud">
-          <span className="h-3 w-3 rounded-full bg-lime" />trailcrew
+          <span className="h-3 w-3 rounded-full bg-lime" />HikeUp
         </a>
         <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur md:flex">
           {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"]].map(([l, h]) => (
