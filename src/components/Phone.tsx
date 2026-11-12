@@ -9,6 +9,10 @@ export function Phone({ children, className = "" }: { children: ReactNode; class
   );
 }
 
+export function ImgScreen({ img, alt = "" }: { img: string; alt?: string }) {
+  return <img src={img} alt={alt} className="h-full w-full object-cover" />;
+}
+
 const Bar = ({ title }: { title: string }) => (
   <div className="flex items-center justify-between px-4 pb-2 pt-10">
     <span className="tech text-lg">{title}</span>

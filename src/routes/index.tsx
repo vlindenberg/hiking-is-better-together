@@ -5,9 +5,14 @@ import c2A from "@/assets/hikers_hail.webp.asset.json";
 import soloA from "@/assets/hikers_pointing.png.asset.json";
 import c1A from "@/assets/hiking_group.png.asset.json";
 import homeA from "@/assets/summit_sunset.jpeg.asset.json";
-import detailA from "@/assets/helping_hand.png.asset.json";
+import joinHomeA from "@/assets/screen_join_home.png.asset.json";
+import joinSearchA from "@/assets/screen_join_search.png.asset.json";
+import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
+import joinDetailA from "@/assets/screen_join_detail.png.asset.json";
+import youreInA from "@/assets/screen_youre_in.png.asset.json";
+import groupChatA from "@/assets/screen_group_chat.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
-import { Phone, HomeScreen, ExploreScreen, AIScreen, CreateScreen, DetailScreen, ChatScreen } from "@/components/Phone";
+import { Phone, HomeScreen, CreateScreen, ImgScreen } from "@/components/Phone";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -118,8 +123,8 @@ function Index() {
         </div>
         <div className="mt-16 space-y-6">
           {[
-            { n: "01", t: "Discover a hike", d: "Explore hikes created by other people and find an adventure that suits you.", bg: "bg-lime", screen: <ExploreScreen />, rot: "rotate-6" },
-            { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", screen: <ChatScreen />, rot: "-rotate-6" },
+            { n: "01", t: "Discover a hike", d: "Explore hikes created by other people and find an adventure that suits you.", bg: "bg-lime", screen: <ImgScreen img={joinHomeA.url} alt="HikeUp join a hike screen" />, rot: "rotate-6" },
+            { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", screen: <ImgScreen img={joinDetailA.url} alt="Hike details with join button" />, rot: "-rotate-6" },
             { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <CreateScreen />, rot: "rotate-3" },
           ].map((s, i) => (
             <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 md:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
@@ -145,13 +150,13 @@ function Index() {
         </div>
         <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
           <Phone className="float -rotate-12 md:translate-y-16" ><HomeScreen img={homeA.url} /></Phone>
-          <Phone className="rotate-6 md:-translate-y-6"><ExploreScreen /></Phone>
-          <Phone className="z-10 -rotate-3 md:scale-110"><AIScreen /></Phone>
-          <Phone className="rotate-12 md:translate-y-10"><DetailScreen img={detailA.url} /></Phone>
+          <Phone className="rotate-6 md:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
+          <Phone className="z-10 -rotate-3 md:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
+          <Phone className="rotate-12 md:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
         </div>
         <div className="relative mt-10 flex flex-wrap justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
           <Phone className="-rotate-6"><CreateScreen /></Phone>
-          <Phone className="float rotate-3 md:translate-y-12"><ChatScreen /></Phone>
+          <Phone className="float rotate-3 md:translate-y-12"><ImgScreen img={groupChatA.url} alt="Hike group chat" /></Phone>
         </div>
         <div className="relative mt-16 flex flex-wrap justify-center gap-3 px-5">
           {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike", "Group chat"].map((l) => (
@@ -177,7 +182,7 @@ function Index() {
           <div className="relative flex justify-center md:col-span-5">
             <div className="absolute h-80 w-80 rounded-full bg-violet" />
             <span className="display absolute -top-10 right-0 text-[10rem] italic text-violet">AI</span>
-            <Phone className="rotate-6 md:scale-110"><AIScreen /></Phone>
+            <Phone className="rotate-6 md:scale-110"><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone>
           </div>
         </div>
       </section>
