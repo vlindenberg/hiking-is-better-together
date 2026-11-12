@@ -10,7 +10,6 @@ import joinSearchA from "@/assets/screen_join_search.png.asset.json";
 import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
 import joinDetailA from "@/assets/screen_join_detail.png.asset.json";
 import youreInA from "@/assets/screen_youre_in.png.asset.json";
-import groupChatA from "@/assets/screen_group_chat.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, HomeScreen, CreateScreen, ImgScreen } from "@/components/Phone";
 
@@ -156,10 +155,9 @@ function Index() {
         </div>
         <div className="relative mt-10 flex flex-wrap justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
           <Phone className="-rotate-6"><CreateScreen /></Phone>
-          <Phone className="float rotate-3 md:translate-y-12"><ImgScreen img={groupChatA.url} alt="Hike group chat" /></Phone>
         </div>
         <div className="relative mt-16 flex flex-wrap justify-center gap-3 px-5">
-          {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike", "Group chat"].map((l) => (
+          {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike"].map((l) => (
             <span key={l} className="label rounded-full border-2 border-cloud px-4 py-2 transition-colors hover:bg-lime hover:text-ink">{l}</span>
           ))}
         </div>
@@ -195,7 +193,7 @@ function Index() {
           <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
             <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
             <div className="grid grid-cols-3 gap-2 text-center">
-              {[["Beginners", "bg-lime"], ["Solo travellers", "bg-violet text-cloud"], ["Trail veterans", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label p-4 ${c}`}>{l}</div>)}
+              {[["Beginners", "bg-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label p-4 ${c}`}>{l}</div>)}
             </div>
           </div>
           <div className="relative md:col-span-5 md:col-start-2">
