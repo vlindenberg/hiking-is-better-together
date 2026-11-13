@@ -4,7 +4,7 @@ import heroA from "@/assets/hikers_hillside.jpeg.asset.json";
 import c2A from "@/assets/hikers_hail.webp.asset.json";
 import soloA from "@/assets/hikers_pointing.png.asset.json";
 import c1A from "@/assets/hiking_group.png.asset.json";
-import homeA from "@/assets/summit_sunset.jpeg.asset.json";
+import homeA from "@/assets/screen_home.png.asset.json";
 import joinHomeA from "@/assets/screen_join_home.png.asset.json";
 import joinSearchA from "@/assets/screen_join_search.png.asset.json";
 import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
@@ -13,7 +13,7 @@ import youreInA from "@/assets/screen_youre_in.png.asset.json";
 import createA from "@/assets/screen_create_hike.png.asset.json";
 import createLocA from "@/assets/screen_create_location.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
-import { Phone, HomeScreen, ImgScreen } from "@/components/Phone";
+import { Phone, ImgScreen } from "@/components/Phone";
 import { LeadForm } from "@/components/LeadForm";
 
 export const Route = createFileRoute("/")({
@@ -151,7 +151,7 @@ function Index() {
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
         </div>
         <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
-          <Phone className="float -rotate-12 md:translate-y-16" ><HomeScreen img={homeA.url} /></Phone>
+          <Phone className="float -rotate-12 md:translate-y-16" ><ImgScreen img={homeA.url} alt="HikeUp home screen" /></Phone>
           <Phone className="rotate-6 md:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
           <Phone className="z-10 -rotate-3 md:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
           <Phone className="rotate-12 md:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
