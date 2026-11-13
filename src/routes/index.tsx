@@ -10,8 +10,10 @@ import joinSearchA from "@/assets/screen_join_search.png.asset.json";
 import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
 import joinDetailA from "@/assets/screen_join_detail.png.asset.json";
 import youreInA from "@/assets/screen_youre_in.png.asset.json";
+import createA from "@/assets/screen_create_hike.png.asset.json";
+import createLocA from "@/assets/screen_create_location.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
-import { Phone, HomeScreen, CreateScreen, ImgScreen } from "@/components/Phone";
+import { Phone, HomeScreen, ImgScreen } from "@/components/Phone";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -124,7 +126,7 @@ function Index() {
           {[
             { n: "01", t: "Discover a hike", d: "Explore hikes created by other people and find an adventure that suits you.", bg: "bg-lime", screen: <ImgScreen img={joinHomeA.url} alt="HikeUp join a hike screen" />, rot: "rotate-6" },
             { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", screen: <ImgScreen img={joinDetailA.url} alt="Hike details with join button" />, rot: "-rotate-6" },
-            { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <CreateScreen />, rot: "rotate-3" },
+            { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <ImgScreen img={createA.url} alt="Create a hike form" />, rot: "rotate-3", noNotch: true },
           ].map((s, i) => (
             <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 md:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
               <span className="display absolute -right-4 -top-16 text-[16rem] italic opacity-20 transition-transform duration-700 group-hover:-translate-x-10 md:text-[22rem]">{s.n}</span>
@@ -133,7 +135,7 @@ function Index() {
                 <h3 className="tech mt-3 text-5xl md:text-7xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
               </div>
-              <div className="relative flex justify-center md:col-span-5"><Phone className={s.rot}>{s.screen}</Phone></div>
+              <div className="relative flex justify-center md:col-span-5"><Phone className={s.rot} notch={!s.noNotch}>{s.screen}</Phone></div>
             </div>
           ))}
         </div>
@@ -153,8 +155,9 @@ function Index() {
           <Phone className="z-10 -rotate-3 md:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
           <Phone className="rotate-12 md:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
         </div>
-        <div className="relative mt-10 flex flex-wrap justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
-          <Phone className="-rotate-6"><CreateScreen /></Phone>
+        <div className="relative mt-10 flex flex-wrap items-center justify-center gap-6 px-4 md:gap-16">
+          <Phone className="-rotate-6" notch={false}><ImgScreen img={createA.url} alt="Create a hike form" /></Phone>
+          <Phone className="rotate-6" notch={false}><ImgScreen img={createLocA.url} alt="Choose the hike location on a map" /></Phone>
         </div>
         <div className="relative mt-16 flex flex-wrap justify-center gap-3 px-5">
           {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike"].map((l) => (

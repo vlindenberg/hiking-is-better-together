@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 
-export function Phone({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Phone({ children, className = "", notch = true }: { children: ReactNode; className?: string; notch?: boolean }) {
   return (
     <div className={`relative aspect-[9/19] w-56 shrink-0 rounded-[2.4rem] bg-ink p-2 shadow-2xl transition-transform duration-500 hover:-translate-y-4 hover:rotate-0 md:w-64 ${className}`}>
-      <div className="absolute left-1/2 top-3 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-ink" />
+      {notch && <div className="absolute left-1/2 top-3 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-ink" />}
       <div className="h-full w-full overflow-hidden rounded-[2rem] bg-cloud text-ink">{children}</div>
     </div>
   );
