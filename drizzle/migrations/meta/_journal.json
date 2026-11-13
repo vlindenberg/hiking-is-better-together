@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794601864746,
+      "tag": "0000_create_newsletter_signups",
+      "breakpoints": true
+    }
+  ]
+}

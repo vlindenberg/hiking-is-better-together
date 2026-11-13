@@ -14,6 +14,7 @@ import createA from "@/assets/screen_create_hike.png.asset.json";
 import createLocA from "@/assets/screen_create_location.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, HomeScreen, ImgScreen } from "@/components/Phone";
+import { LeadForm } from "@/components/LeadForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,7 +65,7 @@ function Index() {
           <span className="h-3 w-3 rounded-full bg-lime" />HikeUp
         </a>
         <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur md:flex">
-          {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"]].map(([l, h]) => (
+          {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"], ["Join", "#join"]].map(([l, h]) => (
             <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-violet hover:text-cloud">{l}</a>
           ))}
         </div>
@@ -219,6 +220,38 @@ function Index() {
           <p className="tech reveal -mt-4 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
           <p className="mx-auto mt-10 max-w-md text-xl font-semibold">Find your hiking crew and discover where the trail takes you.</p>
           <div className="mt-10"><Btn href="#app">Discover the app</Btn></div>
+        </div>
+      </section>
+
+      {/* JOIN THE CREW — lead form */}
+      <section id="join" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
+        <div className="absolute -left-24 top-8 h-64 w-64 rounded-full bg-violet" />
+        <div
+          className="absolute -right-10 bottom-6 h-52 w-52 rotate-12 bg-orange"
+          style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }}
+        />
+        <div className="relative grid items-center gap-12 md:grid-cols-12">
+          <div className="reveal md:col-span-6">
+            <span className="label text-lime">06 — Join the crew</span>
+            <h2 className="display mt-6 text-6xl uppercase md:text-[6.5vw]">
+              Get the trail
+              <br />
+              <span className="italic text-lime">in your inbox</span>
+            </h2>
+            <p className="mt-8 max-w-md text-lg font-medium text-cloud/70">
+              New hikes, trail ideas and early access to HikeUp — before anyone else.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["New hikes near you", "Trail tips", "Early access"].map((p, i) => (
+                <span key={p} className={`label rounded-full px-4 py-3 ${i % 2 ? "bg-lime text-ink" : "border-2 border-cloud/40"}`}>
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="reveal md:col-span-6">
+            <LeadForm />
+          </div>
         </div>
       </section>
 
