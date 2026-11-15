@@ -58,7 +58,7 @@ const Marquee = ({ text, className }: { text: string; className: string }) => (
 function Index() {
   useReveal();
   return (
-    <main>
+    <main className="overflow-x-clip">
       {/* NAV */}
       <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-4 md:px-10">
         <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xl text-cloud">
@@ -80,17 +80,17 @@ function Index() {
           <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
           </h1>
-          <div className="relative -mt-[4vw] grid gap-8 md:grid-cols-12">
-            <div className="relative z-10 md:col-span-7 md:col-start-5">
+          <div className="relative -mt-[4vw] grid gap-8 lg:grid-cols-12">
+            <div className="relative z-10 mt-6 lg:col-span-7 lg:col-start-5 lg:mt-0">
               <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
-              <span className="spin-slow tech absolute -left-10 -top-10 grid h-32 w-32 place-items-center rounded-full bg-lime text-center text-sm md:h-40 md:w-40">✳ meet ✳<br />your crew</span>
+              <span className="spin-slow tech absolute -top-12 right-2 grid h-28 w-28 md:-right-8 md:top-1/3 lg:h-32 lg:w-32 place-items-center rounded-full bg-lime text-center text-xs md:text-sm">✳ meet ✳<br />your crew</span>
             </div>
-            <div className="z-20 flex flex-col justify-end gap-6 md:col-span-4 md:row-start-1 md:pb-10">
+            <div className="z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
               <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
               <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
             </div>
           </div>
-          <h1 className="tech relative z-20 -mt-[6vw] text-right text-[17vw] text-violet md:text-[12vw]">TOGETHER.</h1>
+          <h1 className="tech relative z-20 mt-6 text-right lg:-mt-[6vw] text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
         </div>
       </section>
 
@@ -150,11 +150,11 @@ function Index() {
           <span className="label text-lime">04 — The app</span>
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
         </div>
-        <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 md:-space-x-10 md:gap-0">
-          <Phone className="float -rotate-12 md:translate-y-16" ><ImgScreen img={homeA.url} alt="HikeUp home screen" /></Phone>
-          <Phone className="rotate-6 md:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
-          <Phone className="z-10 -rotate-3 md:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
-          <Phone className="rotate-12 md:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
+        <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 lg:-space-x-10 lg:gap-0">
+          <Phone className="float -rotate-12 lg:translate-y-16" ><ImgScreen img={homeA.url} alt="HikeUp home screen" /></Phone>
+          <Phone className="rotate-6 lg:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
+          <Phone className="z-10 -rotate-3 lg:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
+          <Phone className="rotate-12 lg:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
         </div>
         <div className="relative mt-10 flex flex-wrap items-center justify-center gap-6 px-4 md:gap-16">
           <Phone className="-rotate-6" notch={false}><ImgScreen img={createA.url} alt="Create a hike form" /></Phone>
@@ -169,8 +169,8 @@ function Index() {
 
       {/* AI */}
       <section id="ai" className="relative overflow-hidden bg-lime px-5 py-28 md:px-10">
-        <div className="grid items-center gap-12 md:grid-cols-12">
-          <div className="reveal md:col-span-7">
+        <div className="grid items-center gap-12 lg:grid-cols-12">
+          <div className="reveal lg:col-span-7">
             <span className="label">05 — Trail AI</span>
             <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go<span className="text-violet">?</span></h2>
             <p className="tech mt-6 text-4xl text-violet md:text-6xl">Let AI find your next adventure.</p>
@@ -181,7 +181,7 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="relative flex justify-center md:col-span-5">
+          <div className="relative flex justify-center lg:col-span-5">
             <div className="absolute h-80 w-80 rounded-full bg-violet" />
             <span className="display absolute -top-10 right-0 text-[10rem] italic text-violet">AI</span>
             <Phone className="rotate-6 md:scale-110"><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone>
@@ -196,8 +196,8 @@ function Index() {
           <img src={c2} alt="Two friends laughing in a hailstorm" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
           <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
             <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
-            <div className="grid grid-cols-3 gap-2 text-center">
-              {[["Beginners", "bg-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label p-4 ${c}`}>{l}</div>)}
+            <div className="flex flex-wrap gap-2 text-center">
+              {[["Beginners", "bg-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label flex-1 whitespace-nowrap px-4 py-4 text-xs ${c}`}>{l}</div>)}
             </div>
           </div>
           <div className="relative md:col-span-5 md:col-start-2">
@@ -217,7 +217,7 @@ function Index() {
         <div className="absolute -bottom-20 left-10 h-64 w-64 rotate-45 bg-violet" />
         <div className="relative text-center">
           <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
-          <p className="tech reveal -mt-4 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
+          <p className="tech reveal mt-4 inline-block md:-mt-4 -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
           <p className="mx-auto mt-10 max-w-md text-xl font-semibold">Find your hiking crew and discover where the trail takes you.</p>
           <div className="mt-10"><Btn href="#app">Discover the app</Btn></div>
         </div>
