@@ -129,14 +129,14 @@ function Index() {
             { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", screen: <ImgScreen img={joinDetailA.url} alt="Hike details with join button" />, rot: "-rotate-6" },
             { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <ImgScreen img={createA.url} alt="Create a hike form" />, rot: "rotate-3", noNotch: true },
           ].map((s, i) => (
-            <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 md:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
+            <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 lg:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
               <span className="display absolute -right-4 -top-16 text-[16rem] italic opacity-20 transition-transform duration-700 group-hover:-translate-x-10 md:text-[22rem]">{s.n}</span>
-              <div className={`relative md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
+              <div className={`relative z-10 min-w-0 lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`}>
                 <span className="label">Step {s.n}</span>
-                <h3 className="tech mt-3 text-5xl md:text-7xl">{s.t}</h3>
+                <h3 className="tech mt-3 text-5xl [overflow-wrap:anywhere] md:text-6xl xl:text-7xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
               </div>
-              <div className="relative flex justify-center md:col-span-5"><Phone className={s.rot} notch={!s.noNotch}>{s.screen}</Phone></div>
+              <div className="relative flex justify-center lg:col-span-5"><Phone className={s.rot} notch={!s.noNotch}>{s.screen}</Phone></div>
             </div>
           ))}
         </div>
