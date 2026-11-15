@@ -75,7 +75,7 @@ function Index() {
       {/* HERO */}
       <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
         <div className="absolute -right-24 top-20 h-[30rem] w-[30rem] rounded-full bg-orange md:h-[44rem] md:w-[44rem]" />
-        <div className="absolute -left-20 bottom-10 h-56 w-56 rotate-12 bg-violet" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
+        <div className="absolute -left-20 -bottom-16 h-56 w-56 rotate-12 bg-violet lg:bottom-10" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
         <div className="relative px-5 md:px-10">
           <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
