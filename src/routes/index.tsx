@@ -75,7 +75,7 @@ function Index() {
       {/* HERO */}
       <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
         <div className="absolute -right-24 top-20 h-[30rem] w-[30rem] rounded-full bg-orange md:h-[44rem] md:w-[44rem]" />
-        <div className="absolute -left-20 -bottom-16 h-56 w-56 rotate-12 bg-violet lg:bottom-10" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
+        <div className="absolute -left-20 -bottom-16 h-56 w-56 rotate-12 bg-violet lg:-bottom-24 lg:-left-28" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
         <div className="relative px-5 md:px-10">
           <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
@@ -85,7 +85,7 @@ function Index() {
               <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
               <span className="spin-slow tech absolute -top-12 right-2 grid h-28 w-28 md:-right-8 md:top-1/3 lg:h-32 lg:w-32 place-items-center rounded-full bg-lime text-center text-xs md:text-sm">✳ meet ✳<br />your crew</span>
             </div>
-            <div className="z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
+            <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
               <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
               <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
             </div>
@@ -105,7 +105,7 @@ function Index() {
           </div>
           <div className="reveal relative md:col-span-5">
             <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
-            <div className="label absolute -bottom-6 -left-6 max-w-xs rotate-[-4deg] bg-cloud p-5 text-sm normal-case tracking-normal text-ink">
+            <div className="label absolute -bottom-6 left-0 max-w-xs md:-left-6 rotate-[-4deg] bg-cloud p-5 text-sm normal-case tracking-normal text-ink">
               Your friends are busy. Your group chat is silent. The mountains are waiting — and you're going alone. Again.
             </div>
           </div>
@@ -145,7 +145,7 @@ function Index() {
       {/* SHOWCASE */}
       <section id="app" className="relative overflow-hidden bg-violet py-28 text-cloud">
         <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/90" />
-        <div className="absolute left-[10%] top-[20%] h-40 w-40 rounded-full bg-lime" />
+        <div className="absolute left-[10%] top-[20%] h-40 w-40 rounded-full bg-lime lg:left-[6%] lg:top-[62%]" />
         <div className="relative px-5 text-center md:px-10">
           <span className="label text-lime">04 — The app</span>
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
@@ -217,7 +217,7 @@ function Index() {
         <div className="absolute -bottom-20 left-10 h-64 w-64 rotate-45 bg-violet" />
         <div className="relative text-center">
           <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
-          <p className="tech reveal mt-4 inline-block md:-mt-4 -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
+          <p className="tech reveal mt-6 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
           <p className="mx-auto mt-10 max-w-md text-xl font-semibold">Find your hiking crew and discover where the trail takes you.</p>
           <div className="mt-10"><Btn href="#app">Discover the app</Btn></div>
         </div>
