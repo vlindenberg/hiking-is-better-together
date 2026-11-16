@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import heroA from "@/assets/hikers_hillside.jpeg.asset.json";
-import c2A from "@/assets/hikers_hail.webp.asset.json";
 import soloA from "@/assets/hikers_pointing.png.asset.json";
-import c1A from "@/assets/hiking_group.png.asset.json";
 import homeA from "@/assets/screen_home.png.asset.json";
 import joinHomeA from "@/assets/screen_join_home.png.asset.json";
 import joinSearchA from "@/assets/screen_join_search.png.asset.json";
@@ -11,18 +9,18 @@ import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
 import joinDetailA from "@/assets/screen_join_detail.png.asset.json";
 import youreInA from "@/assets/screen_youre_in.png.asset.json";
 import createA from "@/assets/screen_create_hike.png.asset.json";
-import createLocA from "@/assets/screen_create_location.png.asset.json";
-const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
+const hero = heroA.url, solo = soloA.url;
 import { Phone, ImgScreen } from "@/components/Phone";
 import { LeadForm } from "@/components/LeadForm";
+import { AppIcon } from "@/components/AppIcon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "HikeUp — Hiking is better together" },
-      { name: "description", content: "Find your people, discover new trails and make every hike an adventure with HikeUp." },
+      { name: "description", content: "HikeUp is the social hiking app that helps you find people to hike with and the right trail for you." },
       { property: "og:title", content: "HikeUp — Hiking is better together" },
-      { property: "og:description", content: "The social hiking app: discover hikes, join a crew, create your own adventure." },
+      { property: "og:description", content: "Find your people. Find your trail. The social hiking app for finding hiking partners." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -38,226 +36,192 @@ function useReveal() {
   }, []);
 }
 
-const Btn = ({ href, children, tone = "lime" }: { href: string; children: ReactNode; tone?: "lime" | "ink" | "outline" }) => {
-  const s = { lime: "bg-lime text-ink", ink: "bg-ink text-cloud", outline: "border-2 border-current" }[tone];
+const PROTO = "https://www.figma.com/proto/aFokBOqJ1J0urWrdi1PRg0/Victoria-Lindenberg?node-id=878-1198&starting-point-node-id=878%3A1198&scaling=min-zoom&content-scaling=fixed&page-id=369%3A379";
+
+const Btn = ({ href, children, tone = "lime", external }: { href: string; children: ReactNode; tone?: "lime" | "ink" | "outline" | "cloud"; external?: boolean }) => {
+  const s = { lime: "bg-lime text-ink", ink: "bg-ink text-cloud", cloud: "bg-cloud text-ink", outline: "border-2 border-current" }[tone];
   return (
-    <a href={href} className={`label group inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm transition-all duration-300 hover:scale-105 hover:-rotate-2 ${s}`}>
-      {children}<span className="transition-transform group-hover:translate-x-1">→</span>
+    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`label inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm transition-transform duration-300 hover:scale-105 ${s}`}>
+      {children}<span aria-hidden>→</span>
     </a>
   );
 };
 
-const Marquee = ({ text, className }: { text: string; className: string }) => (
-  <div className={`overflow-hidden whitespace-nowrap py-4 ${className}`}>
-    <div className="marquee inline-block">
-      {Array.from({ length: 8 }).map((_, i) => <span key={i} className="tech mx-6 text-4xl md:text-6xl">{text} <span className="display italic font-normal">✳</span></span>)}
-    </div>
-  </div>
-);
+const links: [string, string][] = [["How it works", "#how"], ["Features", "#features"], ["AI", "#ai"], ["Join", "#join"]];
 
 function Index() {
   useReveal();
   return (
     <main className="overflow-x-clip">
-      {/* NAV */}
-      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-4 md:px-10">
-        <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xl text-cloud">
-          <span className="h-3 w-3 rounded-full bg-lime" />HikeUp
-        </a>
-        <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur md:flex">
-          {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"], ["Join", "#join"]].map(([l, h]) => (
-            <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-violet hover:text-cloud">{l}</a>
-          ))}
+      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 bg-cloud/90 px-5 py-3 backdrop-blur md:px-10">
+        <a href="#" className="flex items-center gap-2"><AppIcon size={36} /><span className="display text-2xl">HikeUp</span></a>
+        <div className="hidden gap-1 text-sm font-bold md:flex">
+          {links.map(([l, h]) => <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-violet hover:text-cloud">{l}</a>)}
         </div>
-        <a href="#cta" className="label rounded-full bg-orange px-5 py-3 text-cloud transition-transform hover:scale-105">Get the app</a>
+        <a href="#join" className="label whitespace-nowrap rounded-full bg-ink px-5 py-3 text-cloud transition-colors hover:bg-violet">Join the crew</a>
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
-        <div className="absolute -right-24 top-20 h-[30rem] w-[30rem] rounded-full bg-orange md:h-[44rem] md:w-[44rem]" />
-        <div className="absolute -left-20 -bottom-16 h-56 w-56 rotate-12 bg-violet lg:-bottom-24 lg:-left-28" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
-        <div className="relative px-5 md:px-10">
-          <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
-            Hiking<br /><span className="ml-[8vw] italic">is better</span>
-          </h1>
-          <div className="relative -mt-[4vw] grid gap-8 lg:grid-cols-12">
-            <div className="relative z-10 mt-6 lg:col-span-7 lg:col-start-5 lg:mt-0">
-              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
-              <span className="spin-slow tech absolute -top-12 right-2 grid h-28 w-28 md:-right-8 md:top-1/3 lg:h-32 lg:w-32 place-items-center rounded-full bg-lime text-center text-xs md:text-sm">✳ meet ✳<br />your crew</span>
-            </div>
-            <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
-              <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
-              <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
-            </div>
+      <section className="bg-cloud px-5 pb-24 pt-28 md:px-10 md:pt-32">
+        <div className="grid items-center gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <AppIcon size={120} className="h-24 w-24 md:h-[120px] md:w-[120px]" />
+            <h1 className="display mt-8 text-6xl md:text-8xl">Hiking is better together.</h1>
+            <p className="display mt-6 text-3xl text-violet md:text-4xl">Find your people. <span className="italic">Find your trail.</span></p>
+            <p className="mt-6 max-w-lg text-lg md:text-xl">HikeUp is the social hiking app that helps you find people to hike with and the right trail for you.</p>
+            <div className="mt-8 flex flex-wrap gap-3"><Btn href="#join" tone="ink">Join the crew</Btn><Btn href={PROTO} tone="outline" external>View the prototype</Btn></div>
           </div>
-          <h1 className="tech relative z-20 mt-6 text-right lg:-mt-[6vw] text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
+          <div className="lg:col-span-6">
+            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-[2rem] object-cover" />
+          </div>
         </div>
       </section>
 
-      <Marquee text="Hiking is better together" className="-rotate-2 bg-lime text-ink" />
+      <div className="bg-lime px-5 py-6 text-center text-ink">
+        <p className="display text-2xl md:text-4xl">Hiking is better together · Find your people · Find your trail</p>
+      </div>
 
       {/* PROBLEM */}
-      <section id="idea" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
-        <div className="grid items-center gap-10 md:grid-cols-12">
+      <section id="idea" className="bg-ink px-5 py-24 text-cloud md:px-10">
+        <div className="grid items-center gap-12 md:grid-cols-12">
           <div className="reveal md:col-span-7">
-            <span className="label text-orange">01 — The problem</span>
-            <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking<span className="text-orange">.</span><br /><span className="italic text-lime">Don't have</span><br />a crew?</h2>
+            <span className="label text-orange">The problem</span>
+            <h2 className="display mt-6 text-5xl md:text-7xl">Love hiking.<br /><span className="text-lime">Don't have a crew?</span></h2>
+            <p className="mt-6 max-w-md text-lg text-cloud/80">Your friends are busy, so the mountains wait — or you go alone. Again.</p>
           </div>
-          <div className="reveal relative md:col-span-5">
-            <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
-            <div className="label absolute -bottom-6 left-0 max-w-xs md:-left-6 rotate-[-4deg] bg-cloud p-5 text-sm normal-case tracking-normal text-ink">
-              Your friends are busy. Your group chat is silent. The mountains are waiting — and you're going alone. Again.
-            </div>
-          </div>
+          <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-[2rem] object-cover md:col-span-5" />
         </div>
-        <div className="reveal mt-32 text-center">
-          <span className="label text-lime">The idea</span>
-          <p className="display mt-4 text-5xl md:text-8xl">Meet the app that <span className="italic text-orange">brings hikers</span> <span className="tech inline-block rotate-2 bg-violet px-4 text-cloud">TOGETHER</span></p>
-          <p className="mx-auto mt-8 max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
+      </section>
+
+      {/* BENEFITS */}
+      <section id="features" className="bg-cloud px-5 py-24 md:px-10">
+        <span className="label text-violet">Benefits</span>
+        <h2 className="display mt-4 text-5xl md:text-7xl">Why HikeUp</h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {[
+            ["Connect", "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", "bg-violet text-cloud"],
+            ["Discover", "Explore new trails and get personalised suggestions from the AI hiking assistant.", "bg-lime text-ink"],
+            ["Organise", "Create or join a hike in a few taps and plan everything in the group chat.", "bg-ink text-cloud"],
+          ].map(([t, d, c]) => (
+            <div key={t} className={`reveal rounded-[2rem] p-8 md:p-10 ${c}`}>
+              <h3 className="display text-4xl md:text-5xl">{t}</h3>
+              <p className="mt-4 text-lg">{d}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* HOW */}
-      <section id="how" className="bg-cloud px-5 py-28 md:px-10">
-        <div className="reveal flex flex-wrap items-end justify-between gap-6">
-          <h2 className="display text-7xl uppercase md:text-[10vw]">How it<br /><span className="italic">works</span></h2>
-          <span className="label max-w-xs">Three moves. Endless trails. Zero hiking alone.</span>
-        </div>
-        <div className="mt-16 space-y-6">
+      <section id="how" className="bg-cloud px-5 pb-24 md:px-10">
+        <span className="label text-violet">How it works</span>
+        <h2 className="display mt-4 text-5xl md:text-7xl">Three steps to the trail</h2>
+        <div className="mt-12 space-y-6">
           {[
-            { n: "01", t: "Discover a hike", d: "Explore hikes created by other people and find an adventure that suits you.", bg: "bg-lime", screen: <ImgScreen img={joinHomeA.url} alt="HikeUp join a hike screen" />, rot: "rotate-6" },
-            { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", screen: <ImgScreen img={joinDetailA.url} alt="Hike details with join button" />, rot: "-rotate-6" },
-            { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <ImgScreen img={createA.url} alt="Create a hike form" />, rot: "rotate-3", noNotch: true },
+            { n: "01", t: "Discover a hike", d: "Explore hikes created by other people and find an adventure that suits you.", bg: "bg-lime text-ink", img: joinHomeA.url, alt: "HikeUp join a hike screen" },
+            { n: "02", t: "Join the crew", d: "Join existing hiking groups, meet new people and share the experience.", bg: "bg-violet text-cloud", img: joinDetailA.url, alt: "Hike details with join button" },
+            { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-ink", img: createA.url, alt: "Create a hike form", noNotch: true },
           ].map((s, i) => (
-            <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 lg:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
-              <span className="display absolute -right-4 -top-16 text-[16rem] italic opacity-20 transition-transform duration-700 group-hover:-translate-x-10 md:text-[22rem]">{s.n}</span>
-              <div className={`relative z-10 min-w-0 lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`}>
+            <div key={s.n} className={`reveal grid items-center gap-10 rounded-[2rem] px-6 py-12 md:px-12 lg:grid-cols-2 ${s.bg}`}>
+              <div className={`min-w-0 ${i % 2 ? "lg:order-2" : ""}`}>
                 <span className="label">Step {s.n}</span>
-                <h3 className="tech mt-3 text-5xl [overflow-wrap:anywhere] md:text-6xl xl:text-7xl">{s.t}</h3>
-                <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
+                <h3 className="display mt-3 text-4xl md:text-6xl">{s.t}</h3>
+                <p className="mt-4 max-w-md text-lg">{s.d}</p>
               </div>
-              <div className="relative flex justify-center lg:col-span-5"><Phone className={s.rot} notch={!s.noNotch}>{s.screen}</Phone></div>
+              <div className="flex justify-center"><Phone notch={!s.noNotch}><ImgScreen img={s.img} alt={s.alt} /></Phone></div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SHOWCASE */}
-      <section id="app" className="relative overflow-hidden bg-violet py-28 text-cloud">
-        <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/90" />
-        <div className="absolute left-[10%] top-[20%] h-40 w-40 rounded-full bg-lime lg:left-[6%] lg:top-[62%]" />
-        <div className="relative px-5 text-center md:px-10">
-          <span className="label text-lime">04 — The app</span>
-          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
-        </div>
-        <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 lg:-space-x-10 lg:gap-0">
-          <Phone className="float -rotate-12 lg:translate-y-16" ><ImgScreen img={homeA.url} alt="HikeUp home screen" /></Phone>
-          <Phone className="rotate-6 lg:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
-          <Phone className="z-10 -rotate-3 lg:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
-          <Phone className="rotate-12 lg:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
-        </div>
-        <div className="relative mt-10 flex flex-wrap items-center justify-center gap-6 px-4 md:gap-16">
-          <Phone className="-rotate-6" notch={false}><ImgScreen img={createA.url} alt="Create a hike form" /></Phone>
-          <Phone className="rotate-6" notch={false}><ImgScreen img={createLocA.url} alt="Choose the hike location on a map" /></Phone>
-        </div>
-        <div className="relative mt-16 flex flex-wrap justify-center gap-3 px-5">
-          {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike"].map((l) => (
-            <span key={l} className="label rounded-full border-2 border-cloud px-4 py-2 transition-colors hover:bg-lime hover:text-ink">{l}</span>
           ))}
         </div>
       </section>
 
       {/* AI */}
-      <section id="ai" className="relative overflow-hidden bg-lime px-5 py-28 md:px-10">
+      <section id="ai" className="bg-lime px-5 py-24 text-ink md:px-10">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="reveal lg:col-span-7">
-            <span className="label">05 — Trail AI</span>
-            <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go<span className="text-violet">?</span></h2>
-            <p className="tech mt-6 text-4xl text-violet md:text-6xl">Let AI find your next adventure.</p>
-            <p className="mt-8 max-w-lg text-lg font-medium">Describe the hike you're craving. Our assistant recommends routes that match — and uncovers hidden alternatives beyond the most crowded trails.</p>
+            <span className="label">App feature · AI hiking assistant</span>
+            <h2 className="display mt-6 text-5xl md:text-7xl">Not sure where to go?</h2>
+            <p className="display mt-4 text-3xl italic text-violet md:text-4xl">Let AI find your next adventure.</p>
+            <p className="mt-6 max-w-lg text-lg">Describe the hike you're craving. The assistant recommends routes that match — and hidden alternatives beyond the most crowded trails.</p>
             <div className="mt-8 flex flex-wrap gap-2">
               {["Peaceful nature", "Beautiful views", "A social adventure", "Less crowded", "Sunrise summit"].map((p, i) => (
-                <span key={p} className={`label cursor-default rounded-full px-4 py-3 transition-transform hover:-rotate-3 hover:scale-110 ${i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}>“{p}”</span>
+                <span key={p} className={`label rounded-full px-4 py-3 ${i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}>“{p}”</span>
               ))}
             </div>
           </div>
-          <div className="relative flex justify-center lg:col-span-5">
-            <div className="absolute h-80 w-80 rounded-full bg-violet" />
-            <span className="display absolute -top-10 right-0 text-[10rem] italic text-violet">AI</span>
-            <Phone className="rotate-6 md:scale-110"><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone>
-          </div>
+          <div className="flex justify-center lg:col-span-5"><Phone><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone></div>
         </div>
       </section>
 
-      {/* COMMUNITY */}
-      <section id="crew" className="bg-cloud px-5 py-28 md:px-10">
-        <h2 className="display reveal text-6xl uppercase md:text-[9vw]">Come for<br />the hike<span className="text-orange">.</span></h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-12">
-          <img src={c2} alt="Two friends laughing in a hailstorm" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
-          <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
-            <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
-            <div className="flex flex-wrap gap-2 text-center">
-              {[["Beginners", "bg-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label flex-1 whitespace-nowrap px-4 py-4 text-xs ${c}`}>{l}</div>)}
-            </div>
-          </div>
-          <div className="relative md:col-span-5 md:col-start-2">
-            <img src={c1} alt="A big hiking group in the forest" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-t-full object-cover" />
-          </div>
-          <div className="flex items-end md:col-span-6">
-            <h2 className="display reveal text-6xl uppercase md:text-[8vw]"><span className="italic text-violet">Stay for</span><br />the people.</h2>
-          </div>
+      {/* SHOWCASE */}
+      <section id="app" className="bg-violet px-5 py-24 text-cloud md:px-10">
+        <div className="text-center">
+          <span className="label text-lime">The app</span>
+          <h2 className="display mt-4 text-5xl md:text-7xl">Your trail in your pocket</h2>
+        </div>
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-2 justify-items-center gap-4 md:gap-8 lg:grid-cols-4">
+          {[[homeA.url, "HikeUp home screen"], [joinSearchA.url, "Hike search results"], [joinDetailA.url, "Hike details with join button"], [youreInA.url, "You're in confirmation screen"]].map((x) => x as [string, string]).map(([img, alt]) => (
+            <Phone key={alt} notch={false} className="!w-full max-w-[16rem]"><ImgScreen img={img} alt={alt} /></Phone>
+          ))}
         </div>
       </section>
 
-      <Marquee text="Say hello · Find your crew" className="rotate-1 bg-violet text-cloud" />
+      {/* SOCIAL PROOF */}
+      <section id="proof" className="bg-cloud px-5 py-24 md:px-10">
+        <span className="label text-violet">Why it matters</span>
+        <h2 className="display mt-4 text-5xl md:text-7xl">Hikers want company</h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <figure className="reveal rounded-[2rem] bg-ink p-8 text-cloud md:p-10">
+            <p className="display text-6xl text-lime">Top 3</p>
+            <p className="mt-4 text-lg">Hiking is one of the 3 most practised sports in Spain: 24.9% of people who did sport in the last year went hiking.</p>
+            <figcaption className="mt-6 text-xs text-cloud/60">Source: Encuesta de Hábitos Deportivos en España 2024/25, Ministerio de Educación, FP y Deportes</figcaption>
+          </figure>
+          <figure className="reveal rounded-[2rem] bg-violet p-8 text-cloud md:p-10">
+            <p className="display text-6xl text-lime">2/3</p>
+            <p className="mt-4 text-lg">2/3 of Appalachian Trail thru-hikers started the trail solo, and 51% were hiking with friends they made on the trail by the end.</p>
+            <figcaption className="mt-6 text-xs text-cloud/70">Source: The Trek, 2023 Appalachian Trail Thru-Hiker Survey, 409 hikers</figcaption>
+          </figure>
+          <figure className="reveal rounded-[2rem] bg-lime p-8 text-ink md:p-10">
+            <blockquote className="display text-3xl italic md:text-4xl">“Hiking buddies can be hard to come by”</blockquote>
+            <figcaption className="mt-6 text-xs text-ink/60">Source: Explorer Chick, 2024</figcaption>
+          </figure>
+          <figure className="reveal rounded-[2rem] bg-orange p-8 text-ink md:p-10">
+            <blockquote className="display text-3xl italic md:text-4xl">“Once upon a time, I didn't hike because I didn't have friends who hiked.”</blockquote>
+            <figcaption className="mt-6 text-xs text-ink/70">Source: Jan McEwen, Gossamer Gear blog, 2014</figcaption>
+          </figure>
+        </div>
+      </section>
 
       {/* CTA */}
-      <section id="cta" className="relative overflow-hidden bg-orange px-5 py-32 text-cloud md:px-10">
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-lime" />
-        <div className="absolute -bottom-20 left-10 h-64 w-64 rotate-45 bg-violet" />
-        <div className="relative text-center">
-          <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
-          <p className="tech reveal mt-6 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
-          <p className="mx-auto mt-10 max-w-md text-xl font-semibold">Find your hiking crew and discover where the trail takes you.</p>
-          <div className="mt-10"><Btn href="#app">Discover the app</Btn></div>
+      <section id="cta" className="bg-orange px-5 py-28 text-center text-ink md:px-10">
+        <h2 className="display reveal mx-auto max-w-4xl text-5xl md:text-8xl">Your next adventure starts with <span className="italic">a hello.</span></h2>
+        <div className="mt-10"><Btn href="#join" tone="ink">Join the crew</Btn></div>
+      </section>
+
+      {/* JOIN */}
+      <section id="join" className="bg-ink px-5 py-24 text-cloud md:px-10">
+        <div className="grid items-center gap-12 md:grid-cols-12">
+          <div className="reveal md:col-span-6">
+            <span className="label text-lime">Join the crew</span>
+            <h2 className="display mt-6 text-5xl md:text-6xl">Get the trail <span className="italic text-lime">in your inbox</span></h2>
+            <p className="mt-6 max-w-md text-lg text-cloud/80">New hikes, trail ideas and early access to HikeUp — before anyone else.</p>
+          </div>
+          <div className="reveal md:col-span-6"><LeadForm /></div>
         </div>
       </section>
 
-      {/* JOIN THE CREW — lead form */}
-      <section id="join" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
-        <div className="absolute -left-24 top-8 h-64 w-64 rounded-full bg-violet" />
-        <div
-          className="absolute -right-10 bottom-6 h-52 w-52 rotate-12 bg-orange"
-          style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }}
-        />
-        <div className="relative grid items-center gap-12 md:grid-cols-12">
-          <div className="reveal md:col-span-6">
-            <span className="label text-lime">06 — Join the crew</span>
-            <h2 className="display mt-6 text-6xl uppercase md:text-[6.5vw]">
-              Get the trail
-              <br />
-              <span className="italic text-lime">in your inbox</span>
-            </h2>
-            <p className="mt-8 max-w-md text-lg font-medium text-cloud/70">
-              New hikes, trail ideas and early access to HikeUp — before anyone else.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["New hikes near you", "Trail tips", "Early access"].map((p, i) => (
-                <span key={p} className={`label rounded-full px-4 py-3 ${i % 2 ? "bg-lime text-ink" : "border-2 border-cloud/40"}`}>
-                  {p}
-                </span>
-              ))}
-            </div>
+      <footer className="bg-ink px-5 pb-10 text-cloud md:px-10">
+        <div className="flex flex-wrap items-start justify-between gap-8 border-t border-cloud/15 pt-10">
+          <div>
+            <a href="#" className="flex items-center gap-2"><AppIcon size={40} /><span className="display text-3xl">HikeUp</span></a>
+            <p className="mt-3 text-cloud/70">Find your people. Find your trail.</p>
           </div>
-          <div className="reveal md:col-span-6">
-            <LeadForm />
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold">
+            <a href="#how" className="hover:text-lime">How it works</a>
+            <a href="#features" className="hover:text-lime">Features</a>
+            <a href="#join" className="hover:text-lime">Join</a>
+            <a href={PROTO} target="_blank" rel="noopener noreferrer" className="hover:text-lime">View the prototype</a>
           </div>
         </div>
-      </section>
-
-      <footer className="flex flex-wrap items-center justify-between gap-4 bg-ink px-5 py-8 text-cloud md:px-10">
-        <span className="tech text-3xl">HikeUp</span>
-        <span className="label text-cloud/60">Hiking is better together · © 2026</span>
+        <p className="mt-10 text-xs text-cloud/60">© 2026 HikeUp · Applied Technology · BA Business Design</p>
       </footer>
     </main>
   );
