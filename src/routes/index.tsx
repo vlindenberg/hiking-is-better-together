@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "HikeUp — Hiking is better together" },
-      { name: "description", content: "Find your people. Find your trail. HikeUp is the social hiking app that helps you find people to hike with and the right trail for you." },
+      { name: "description", content: "Find your people, discover new trails and make every hike an adventure with HikeUp." },
       { property: "og:title", content: "HikeUp — Hiking is better together" },
       { property: "og:description", content: "The social hiking app: discover hikes, join a crew, create your own adventure." },
       { property: "og:type", content: "website" },
@@ -74,20 +74,21 @@ function Index() {
       </nav>
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-violet px-5 pb-20 pt-28 text-cloud md:px-10 lg:min-h-screen lg:pt-32">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="relative z-10 lg:col-span-7">
-            <span className="label inline-flex items-center gap-3 rounded-full bg-ink py-1.5 pl-1.5 pr-4 text-lime"><AppIcon size={28} />Hiking is better together</span>
-            <h1 className="display mt-8 text-[13vw] uppercase leading-[0.9] md:text-[9vw] lg:text-[5.6vw]">
-              Find your <span className="italic">people.</span>
-              <br />
-              <span className="text-lime">Find your <span className="italic">trail.</span></span>
-            </h1>
-            <p className="mt-8 max-w-xl text-xl font-medium leading-snug md:text-2xl">HikeUp is the social hiking app that helps you find people to hike with and the right trail for you.</p>
-            <div className="mt-10 flex flex-wrap gap-3"><Btn href="#join" tone="lime">Join the crew</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
+      <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
+        <div className="relative px-5 md:px-10">
+          <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
+            Hiking<br /><span className="ml-[8vw] italic">is better</span>
+          </h1>
+          <div className="relative -mt-[4vw] grid gap-8 lg:grid-cols-12">
+            <div className="relative z-10 mt-6 lg:col-span-7 lg:col-start-5 lg:mt-0">
+              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
+            </div>
+            <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
+              <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
+              <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
+            </div>
           </div>
-          <div className="relative lg:col-span-5">
-            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1920} height={1282} className="aspect-[4/5] w-full rounded-t-full object-cover object-[58%_center] shadow-2xl md:mx-auto md:max-w-md lg:max-w-none lg:rotate-2 transition-transform duration-700 hover:rotate-0" />          </div>
+          <h1 className="tech relative z-20 mt-6 text-right lg:-mt-[6vw] text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
         </div>
       </section>
 
@@ -230,7 +231,7 @@ function Index() {
         </div>
       </section>
 
-      <Marquee text="Say hello · Find your crew" className="rotate-1 bg-violet text-cloud" />
+      <Marquee text="Find your people · Find your trail" className="rotate-1 bg-violet text-cloud" />
 
       {/* SOCIAL PROOF — real quotes from hikers */}
       <section id="voices" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
