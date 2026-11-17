@@ -98,7 +98,7 @@ function Index() {
             <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking.<br /><span className="italic">Don't have</span><br />a crew?</h2>
           </div>
           <div className="reveal relative md:col-span-5">
-            <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
+            <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover" />
             <div className="label absolute -bottom-6 left-0 max-w-xs md:-left-6 rotate-[-4deg] bg-cloud p-5 text-sm normal-case tracking-normal text-ink">
               Your friends are busy. Your group chat is silent. The mountains are waiting — and you're going alone. Again.
             </div>
