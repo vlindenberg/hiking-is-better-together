@@ -147,11 +147,9 @@ function Index() {
             { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <ImgScreen img={createA.url} alt="Create a hike form" />, rot: "rotate-3", noNotch: true },
           ].map((s, i) => (
             <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 lg:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
+              <span className={`display pointer-events-none absolute -top-16 text-[16rem] italic opacity-25 transition-transform duration-700 md:text-[22rem] ${i % 2 ? "-right-4 group-hover:-translate-x-10" : "-left-4 group-hover:translate-x-10"}`}>{s.n}</span>
               <div className={`relative z-10 min-w-0 lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`}>
-                <div className="flex items-end gap-3">
-                  <span className="label mb-3">Step</span>
-                  <span className={`display text-8xl italic leading-none md:text-9xl ${["text-violet", "text-lime", "text-ink"][i]}`}>{s.n}</span>
-                </div>
+                <span className="label">Step {s.n}</span>
                 <h3 className="tech mt-3 text-5xl [overflow-wrap:anywhere] md:text-6xl xl:text-7xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
                 {i === 0 && (
