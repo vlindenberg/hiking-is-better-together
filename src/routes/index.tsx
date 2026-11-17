@@ -294,7 +294,7 @@ function Index() {
             ))}
           </nav>
         </div>
-        <p className="label mt-12 text-cloud/50">© 2026 HikeUp · Hiking is better together · Applied Technology · BA Business Design</p>
+        <p className="label mt-12 text-cloud/50">© 2026 HikeUp · Hiking is better together</p>
       </footer>
     </main>
   );
