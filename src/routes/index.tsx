@@ -95,7 +95,7 @@ function Index() {
         <div className="grid items-center gap-10 md:grid-cols-12">
           <div className="reveal md:col-span-7">
             <span className="label text-orange">01 — The problem</span>
-            <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking<span className="text-orange">.</span><br /><span className="italic text-lime">Don't have</span><br />a crew?</h2>
+            <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking.<br /><span className="italic">Don't have</span><br />a crew?</h2>
           </div>
           <div className="reveal relative md:col-span-5">
             <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
@@ -106,7 +106,7 @@ function Index() {
         </div>
         <div className="reveal mt-32 text-center">
           <span className="label text-lime">The idea</span>
-          <p className="display mt-4 text-5xl md:text-8xl">Meet the app that <span className="italic text-orange">brings hikers</span> <span className="tech inline-block rotate-2 bg-violet px-4 text-cloud">TOGETHER</span></p>
+          <p className="display mt-4 text-5xl md:text-8xl">Meet the app that <span className="italic text-lime">brings hikers</span> <span className="tech inline-block rotate-2 bg-violet px-4 text-cloud">TOGETHER</span></p>
           <p className="mx-auto mt-8 max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
         </div>
       </section>
@@ -115,7 +115,7 @@ function Index() {
       <section id="benefits" className="relative overflow-hidden bg-orange px-5 py-28 text-ink md:px-10">
         <div className="relative">
           <span className="label">02 — Benefits</span>
-          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span><span className="text-cloud">?</span></h2>
+          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span>?</h2>
           <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-6">
             {[
               { n: "01", t: "Connect", d: "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", c: "bg-violet text-cloud", r: "md:-rotate-2" },
