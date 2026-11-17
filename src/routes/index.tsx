@@ -73,9 +73,9 @@ function Index() {
             <p className="mt-6 max-w-lg text-lg md:text-xl">HikeUp is the social hiking app that helps you find people to hike with and the right trail for you.</p>
             <div className="mt-8 flex flex-wrap gap-3"><Btn href="#join" tone="lime">Join the crew</Btn></div>
           </div>
-          <div className="relative h-80 md:h-[28rem] lg:h-auto">
-            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-b from-violet via-violet/10 to-transparent lg:bg-gradient-to-r lg:via-violet/20" />
+          <div className="relative h-[22rem] overflow-hidden md:h-[30rem] lg:h-auto">
+            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1920} height={1282} className="absolute inset-0 h-full w-full object-cover object-[60%_75%]" />
+            <div aria-hidden className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-violet to-transparent lg:inset-y-0 lg:left-0 lg:right-auto lg:h-full lg:w-24 lg:bg-gradient-to-r" />
           </div>
         </div>
       </section>
@@ -107,9 +107,11 @@ function Index() {
             ["Discover", "Explore new trails and get personalised suggestions from the AI hiking assistant.", "bg-lime text-ink", sunsetA.url, "Three hikers on a summit at sunset"],
             ["Organise", "Create or join a hike in a few taps and plan everything in the group chat.", "bg-ink text-cloud", groupA.url, "A large group of hikers posing on a rock in a pine forest"],
           ].map(([t, d, c, img, alt]) => (
-            <div key={t} className={`reveal overflow-hidden rounded-[2rem] ${c}`}>
-              <img src={img} alt={alt} loading="lazy" className={`h-[220px] w-full object-cover ${t === "Connect" ? "scale-110" : ""}`} />
-              <div className="p-8 md:p-10">
+            <div key={t} className={`reveal overflow-hidden rounded-[2rem] md:flex lg:block ${c}`}>
+              <div className="overflow-hidden md:w-2/5 md:shrink-0 lg:w-full">
+                <img src={img} alt={alt} loading="lazy" width={1080} height={1350} className={`aspect-[4/5] h-full w-full object-cover ${t === "Connect" ? "scale-[1.12]" : ""}`} />
+              </div>
+              <div className="p-8 md:flex md:flex-col md:justify-center md:p-10">
                 <h3 className="display text-4xl md:text-5xl">{t}</h3>
                 <p className="mt-4 text-lg">{d}</p>
               </div>
@@ -185,10 +187,15 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="relative isolate overflow-hidden bg-orange px-5 py-32 text-center text-ink md:px-10 md:py-44">
-        <img src={hailA.url} alt="Two friends laughing under a rock overhang in a hailstorm" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45 mix-blend-multiply grayscale" />
-        <h2 className="display reveal mx-auto max-w-4xl text-5xl md:text-8xl">Your next adventure starts with <span className="italic">a hello.</span></h2>
-        <div className="mt-10"><Btn href="#join" tone="ink">Join the crew</Btn></div>
+      <section id="cta" className="bg-orange text-ink lg:grid lg:min-h-[40rem] lg:grid-cols-2">
+        <div className="flex flex-col justify-center px-5 py-24 md:px-10 lg:py-32">
+          <h2 className="display reveal max-w-2xl text-5xl md:text-7xl">Your next adventure starts with <span className="italic">a hello.</span></h2>
+          <div className="mt-10"><Btn href="#join" tone="ink">Join the crew</Btn></div>
+        </div>
+        <div className="relative h-[22rem] overflow-hidden md:h-[30rem] lg:h-auto">
+          <img src={hailA.url} alt="Two friends laughing under a rock overhang in a hailstorm" loading="lazy" width={1920} height={1281} className="absolute inset-0 h-full w-full object-cover object-[55%_60%]" />
+          <div aria-hidden className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-orange to-transparent lg:inset-y-0 lg:left-0 lg:right-auto lg:h-full lg:w-24 lg:bg-gradient-to-r" />
+        </div>
       </section>
 
       {/* JOIN */}
