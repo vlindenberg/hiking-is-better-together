@@ -90,8 +90,6 @@ function Index() {
         </div>
       </section>
 
-      <Marquee text="Hiking is better together" className="-rotate-2 bg-lime text-ink" />
-
       {/* PROBLEM */}
       <section id="idea" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
         <div className="grid items-center gap-10 md:grid-cols-12">
