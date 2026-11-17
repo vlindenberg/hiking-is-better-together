@@ -74,21 +74,19 @@ function Index() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
-        <div className="relative px-5 md:px-10">
-          <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
+      <section className="relative min-h-screen overflow-hidden bg-ink pt-24 text-cloud">
+        <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1920} height={1282} className="absolute inset-0 h-full w-full object-cover object-[55%_70%]" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/30 to-ink/80" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/50 to-transparent" />
+        <div className="relative flex min-h-[calc(100vh-6rem)] flex-col justify-between gap-10 px-5 pb-10 md:px-10">
+          <h1 className="display text-[19vw] uppercase [text-shadow:0_4px_30px_rgb(0_0_0/0.35)] md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
           </h1>
-          <div className="relative mt-8 grid items-end gap-8 lg:mt-4 lg:grid-cols-12">
-            <div className="relative z-10 lg:col-span-7 lg:col-start-5">
-              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1920} height={1282} className="aspect-[3/2] w-full rounded-[2.5rem] object-cover object-[55%_70%] shadow-2xl" />
-            </div>
-            <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
-              <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
-              <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
-            </div>
+          <div className="flex flex-col gap-6 lg:max-w-md">
+            <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
+            <div className="flex flex-wrap gap-3"><Btn href="#app" tone="lime">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
           </div>
-          <h1 className="tech relative z-20 mt-6 text-right text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
+          <h1 className="tech text-right text-[13vw] text-lime [text-shadow:0_4px_30px_rgb(0_0_0/0.35)] md:text-[12vw]">TOGETHER.</h1>
         </div>
       </section>
 
