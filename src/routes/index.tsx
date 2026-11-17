@@ -56,54 +56,72 @@ const Marquee = ({ text, className }: { text: string; className: string }) => (
   </div>
 );
 
-const AI_TRAILS: Record<string, { trail: string; place: string; level: string; time: string; why: string }> = {
-  "Peaceful nature": { trail: "Fageda d'en Jordà", place: "La Garrotxa", level: "Easy", time: "2 h loop", why: "A quiet beech forest growing on an old lava flow. Soft paths, birdsong and almost no climbing." },
-  "Beautiful views": { trail: "Sant Jeroni", place: "Montserrat", level: "Intermediate", time: "3–4 h", why: "The highest point of Montserrat. On a clear day you can see the Pyrenees and the sea." },
-  "A social adventure": { trail: "Carretera de les Aigües", place: "Collserola, Barcelona", level: "Beginner", time: "2–3 h", why: "Flat and wide, so it's easy to walk and talk. A HikeUp group goes every Saturday morning." },
-  "Less crowded": { trail: "Les Agudes", place: "Montseny", level: "Intermediate", time: "4 h", why: "A quieter alternative to Turó de l'Home, with the same mountain views and far fewer people." },
-  "Sunrise summit": { trail: "La Mola", place: "Sant Llorenç del Munt", level: "Intermediate", time: "2 h up", why: "Start in the dark, watch the sun rise over the rocks, and have breakfast at the top." },
+type Hike = { trail: string; place: string; level: string; km: string; time: string; by: string; why: string };
+const HIKES: Record<string, Hike> = {
+  montserrat: { trail: "Montserrat Mountain Trail", place: "Montserrat, Barcelona", level: "Moderate", km: "8.2 km", time: "3h 10 min", by: "Marta", why: "Jagged rock towers and wide views over Catalonia. Start from Monistrol de Montserrat station." },
+  fageda: { trail: "Fageda d’en Jordà Forest Trail", place: "La Garrotxa", level: "Easy", km: "4.8 km", time: "1h 30 min", by: "Núria", why: "A quiet beech forest on an old lava flow. Soft paths, birdsong and almost no climbing." },
+  laguna: { trail: "Hiking Laguna Grande", place: "Peñalara, Madrid", level: "Hard", km: "9.6 km", time: "3h 30 min", by: "Jordi", why: "A mountain lake below the Peñalara peak. Meet at Puerto de Cotos car park." },
+  nuria: { trail: "Vall de Núria Mountain Trail", place: "Vall de Núria, Pyrenees", level: "Moderate", km: "10.5 km", time: "4h 15 min", by: "Pau", why: "No cars can reach this valley. Take the rack railway from Queralbs and leave the crowds behind." },
+  pedraforca: { trail: "Pedraforca Summit Trail", place: "Berguedà, Pyrenees", level: "Hard", km: "11 km", time: "5h 30 min", by: "Laura", why: "An early start to one of Catalonia’s most iconic peaks, with the first light on the summit." },
+  ronda: { trail: "Camí de Ronda Trail", place: "Costa Brava", level: "Moderate", km: "6.14 km", time: "1h 35 min", by: "Alex", why: "A coastal path past hidden coves and turquoise water. Bring your swimsuit." },
+  collserola: { trail: "Collserola Nature Walk", place: "Carretera de les Aigües, Barcelona", level: "Easy", km: "5.4 km", time: "1h 50 min", by: "Sam", why: "A flat, easy walk above the city with views over Barcelona. Perfect for a first group hike." },
 };
+const AI_CHIPS: [string, keyof typeof HIKES | "surprise"][] = [
+  ["Scenic views", "montserrat"],
+  ["Peaceful nature", "fageda"],
+  ["Waterfalls & lakes", "laguna"],
+  ["Less crowded", "nuria"],
+  ["Sunrise summit", "pedraforca"],
+  ["Surprise me!", "surprise"],
+];
 
 function AiDemo() {
   const [pick, setPick] = useState<string | null>(null);
+  const [hike, setHike] = useState<Hike | null>(null);
   const [thinking, setThinking] = useState(false);
-  const choose = (p: string) => {
-    setPick(p);
+  const choose = (label: string, key: keyof typeof HIKES | "surprise") => {
+    let h: Hike;
+    if (key === "surprise") {
+      const all = Object.values(HIKES).filter((x) => x !== hike);
+      h = all[Math.floor(Math.random() * all.length)];
+    } else h = HIKES[key];
+    setPick(label);
+    setHike(h);
     setThinking(true);
     window.setTimeout(() => setThinking(false), 700);
   };
-  const t = pick ? AI_TRAILS[pick] : null;
   return (
     <div className="mt-8">
-      <p className="label text-sm">Try it: what are you in the mood for?</p>
+      <p className="label text-sm">Try it: what kind of experience?</p>
       <div className="mt-4 flex flex-wrap gap-2">
-        {Object.keys(AI_TRAILS).map((p, i) => (
+        {AI_CHIPS.map(([label, key], i) => (
           <button
-            key={p}
+            key={label}
             type="button"
-            onClick={() => choose(p)}
-            aria-pressed={pick === p}
-            className={`label cursor-pointer rounded-full px-4 py-3 transition-transform hover:-rotate-3 hover:scale-110 ${pick === p ? "bg-orange text-ink ring-2 ring-ink" : i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}
+            onClick={() => choose(label, key)}
+            aria-pressed={pick === label}
+            className={`label cursor-pointer rounded-full px-4 py-3 transition-transform hover:-rotate-3 hover:scale-110 ${pick === label ? "bg-orange text-ink ring-2 ring-ink" : i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}
           >
-            “{p}”
+            {label}
           </button>
         ))}
       </div>
       <div aria-live="polite" className="mt-6 max-w-lg">
-        {t && (
+        {hike && (
           <div className="rounded-3xl rounded-tl-none bg-ink p-6 text-cloud shadow-xl">
             <p className="label text-xs text-lime">HikeUp AI</p>
             {thinking ? (
-              <p className="mt-3 animate-pulse text-lg font-medium">Finding your trail…</p>
+              <p className="mt-3 animate-pulse text-lg font-medium">Finding your adventure…</p>
             ) : (
               <>
-                <p className="display mt-3 text-3xl italic">{t.trail}</p>
-                <p className="mt-1 text-sm font-semibold text-cloud/70">{t.place}</p>
+                <p className="display mt-3 text-3xl italic">{hike.trail}</p>
+                <p className="mt-1 text-sm font-semibold text-cloud/70">{hike.place} · Organised by {hike.by}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="label rounded-full bg-lime px-3 py-1 text-xs text-ink">{t.level}</span>
-                  <span className="label rounded-full bg-violet px-3 py-1 text-xs text-cloud">{t.time}</span>
+                  <span className="label rounded-full bg-lime px-3 py-1 text-xs text-ink">{hike.level}</span>
+                  <span className="label rounded-full bg-violet px-3 py-1 text-xs text-cloud">{hike.km}</span>
+                  <span className="label rounded-full bg-orange px-3 py-1 text-xs text-ink">{hike.time}</span>
                 </div>
-                <p className="mt-4 font-medium">{t.why}</p>
+                <p className="mt-4 font-medium">{hike.why}</p>
               </>
             )}
           </div>
