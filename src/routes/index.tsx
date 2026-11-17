@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import helpA from "@/assets/helping_hand.png.asset.json";
+import sunsetA from "@/assets/summit_sunset.jpeg.asset.json";
+import groupA from "@/assets/hiking_group.png.asset.json";
+import hailA from "@/assets/hikers_hail.webp.asset.json";
 import heroA from "@/assets/hikers_hillside.jpeg.asset.json";
 import soloA from "@/assets/hikers_pointing.png.asset.json";
 import homeA from "@/assets/screen_home.png.asset.json";
@@ -51,26 +55,27 @@ function Index() {
   useReveal();
   return (
     <main className="overflow-x-clip">
-      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 bg-cloud/90 px-5 py-3 backdrop-blur md:px-10">
+      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 bg-ink/90 px-5 py-3 text-cloud backdrop-blur md:px-10">
         <a href="#" className="flex items-center gap-2"><AppIcon size={36} /><span className="display text-2xl">HikeUp</span></a>
         <div className="hidden gap-1 text-sm font-bold md:flex">
-          {links.map(([l, h]) => <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-violet hover:text-cloud">{l}</a>)}
+          {links.map(([l, h]) => <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:text-lime">{l}</a>)}
         </div>
-        <a href="#join" className="label whitespace-nowrap rounded-full bg-ink px-5 py-3 text-cloud transition-colors hover:bg-violet">Join the crew</a>
+        <a href="#join" className="label whitespace-nowrap rounded-full bg-lime px-5 py-3 text-ink transition-transform hover:scale-105">Join the crew</a>
       </nav>
 
       {/* HERO */}
-      <section className="bg-violet px-5 pb-24 pt-28 text-cloud md:px-10 md:pt-32">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+      <section className="relative bg-violet text-cloud lg:min-h-[44rem]">
+        <div className="lg:grid lg:min-h-[44rem] lg:grid-cols-2">
+          <div className="relative z-10 px-5 pb-16 pt-28 md:px-10 md:pt-32 lg:pb-24">
             <AppIcon size={120} className="h-24 w-24 md:h-[120px] md:w-[120px]" />
             <h1 className="display mt-8 text-6xl md:text-8xl">Hiking is better together.</h1>
             <p className="display mt-6 text-3xl text-lime md:text-4xl">Find your people. <span className="italic">Find your trail.</span></p>
             <p className="mt-6 max-w-lg text-lg md:text-xl">HikeUp is the social hiking app that helps you find people to hike with and the right trail for you.</p>
             <div className="mt-8 flex flex-wrap gap-3"><Btn href="#join" tone="lime">Join the crew</Btn></div>
           </div>
-          <div className="lg:col-span-6">
-            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-[2rem] object-cover" />
+          <div className="relative h-80 md:h-[28rem] lg:h-auto">
+            <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-violet via-violet/10 to-transparent lg:bg-gradient-to-r lg:via-violet/20" />
           </div>
         </div>
       </section>
@@ -80,14 +85,15 @@ function Index() {
       </div>
 
       {/* PROBLEM */}
-      <section id="idea" className="bg-ink px-5 py-24 text-cloud md:px-10">
-        <div className="grid items-center gap-12 md:grid-cols-12">
-          <div className="reveal md:col-span-7">
+      <section id="idea" className="relative overflow-hidden bg-ink px-5 py-32 text-cloud md:px-10 md:py-44">
+        <img src={solo} alt="Two hikers pointing at a dramatic mountain face" loading="lazy" width={1024} height={1280} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
+        <div className="relative">
+          <div className="reveal max-w-2xl">
             <span className="label text-orange">The problem</span>
             <h2 className="display mt-6 text-5xl md:text-7xl">Love hiking.<br /><span className="text-lime">Don't have a crew?</span></h2>
             <p className="mt-6 max-w-md text-lg text-cloud/80">Your friends are busy, so the mountains wait — or you go alone. Again.</p>
           </div>
-          <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-[2rem] object-cover md:col-span-5" />
         </div>
       </section>
 
@@ -95,23 +101,26 @@ function Index() {
       <section id="features" className="bg-orange px-5 py-24 text-ink md:px-10">
         <span className="label text-ink">Benefits</span>
         <h2 className="display mt-4 text-5xl md:text-7xl">Why HikeUp</h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {[
-            ["Connect", "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", "bg-violet text-cloud"],
-            ["Discover", "Explore new trails and get personalised suggestions from the AI hiking assistant.", "bg-lime text-ink"],
-            ["Organise", "Create or join a hike in a few taps and plan everything in the group chat.", "bg-ink text-cloud"],
-          ].map(([t, d, c]) => (
-            <div key={t} className={`reveal rounded-[2rem] p-8 md:p-10 ${c}`}>
-              <h3 className="display text-4xl md:text-5xl">{t}</h3>
-              <p className="mt-4 text-lg">{d}</p>
+            ["Connect", "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", "bg-violet text-cloud", helpA.url, "Hikers helping each other up a rocky ridge"],
+            ["Discover", "Explore new trails and get personalised suggestions from the AI hiking assistant.", "bg-lime text-ink", sunsetA.url, "Three hikers on a summit at sunset"],
+            ["Organise", "Create or join a hike in a few taps and plan everything in the group chat.", "bg-ink text-cloud", groupA.url, "A large group of hikers posing on a rock in a pine forest"],
+          ].map(([t, d, c, img, alt]) => (
+            <div key={t} className={`reveal overflow-hidden rounded-[2rem] ${c}`}>
+              <img src={img} alt={alt} loading="lazy" className={`h-[220px] w-full object-cover ${t === "Connect" ? "scale-110" : ""}`} />
+              <div className="p-8 md:p-10">
+                <h3 className="display text-4xl md:text-5xl">{t}</h3>
+                <p className="mt-4 text-lg">{d}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* HOW */}
-      <section id="how" className="bg-cloud px-5 py-24 md:px-10">
-        <span className="label text-violet">How it works</span>
+      <section id="how" className="bg-ink px-5 py-24 text-cloud md:px-10">
+        <span className="label text-lime">How it works</span>
         <h2 className="display mt-4 text-5xl md:text-7xl">Three steps to the trail</h2>
         <div className="mt-12 space-y-6">
           {[
@@ -167,7 +176,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-2 md:gap-16">
           {[["Hiking buddies can be hard to come by.", "Explorer Chick"], ["Once upon a time, I didn't hike because I didn't have friends who hiked.", "Jan McEwen, hiker"]].map(([t, n]) => (
             <figure key={n} className="reveal">
-              <span aria-hidden className="display block text-8xl leading-none text-lime">“</span>
+              <span aria-hidden className="display block text-8xl leading-none text-violet">“</span>
               <blockquote className="display -mt-6 text-3xl italic md:text-4xl">{t}</blockquote>
               <figcaption className="mt-6 text-sm font-bold">{n}</figcaption>
             </figure>
@@ -176,7 +185,8 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="bg-orange px-5 py-28 text-center text-ink md:px-10">
+      <section id="cta" className="relative isolate overflow-hidden bg-orange px-5 py-32 text-center text-ink md:px-10 md:py-44">
+        <img src={hailA.url} alt="Two friends laughing under a rock overhang in a hailstorm" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45 mix-blend-multiply grayscale" />
         <h2 className="display reveal mx-auto max-w-4xl text-5xl md:text-8xl">Your next adventure starts with <span className="italic">a hello.</span></h2>
         <div className="mt-10"><Btn href="#join" tone="ink">Join the crew</Btn></div>
       </section>
