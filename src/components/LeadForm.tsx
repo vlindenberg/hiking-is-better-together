@@ -61,7 +61,7 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="rounded-[2rem] bg-lime p-6 text-ink md:p-8">
+    <form onSubmit={onSubmit} noValidate className="rounded-[2rem] bg-cloud p-6 text-ink md:p-8">
       <label htmlFor="crew-email" className="label text-ink/60">
         Email address
       </label>
@@ -87,7 +87,7 @@ export function LeadForm() {
         className="absolute h-0 w-0 -translate-x-[9999px] opacity-0"
       />
       {error && (
-        <p id="crew-email-hint" role="alert" className="label mt-3 text-violet">
+        <p id="crew-email-hint" role="alert" className="label mt-3 text-orange">
           {error}
         </p>
       )}
