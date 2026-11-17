@@ -244,7 +244,6 @@ function Index() {
             </figure>
           ))}
         </div>
-        <p className="label relative mt-16 text-xs text-cloud/50">Example reviews · HikeUp is a concept app</p>
       </section>
 
       {/* CTA */}
