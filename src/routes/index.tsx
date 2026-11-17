@@ -179,7 +179,7 @@ function SiteNav() {
               <a
                 href={h}
                 onClick={() => setOpen(false)}
-                className={`display block text-5xl uppercase transition-colors hover:text-lime md:text-7xl ${i === NAV_LINKS.length - 1 ? "text-orange" : ""}`}
+                className="display block text-5xl uppercase transition-colors hover:text-lime md:text-7xl"
               >
                 {l}
               </a>
@@ -230,7 +230,8 @@ function Index() {
           </div>
         </div>
         <div className="reveal mt-32 text-center">
-          <p className="mx-auto max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
+          <p className="display text-5xl md:text-8xl">Meet the app that <span className="text-lime">brings hikers</span> together</p>
+          <p className="mx-auto mt-8 max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
         </div>
       </section>
 
