@@ -65,11 +65,11 @@ function Index() {
         <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink py-1 pl-1 pr-3 text-base text-cloud">
           <AppIcon size={26} />HikeUp
         </a>
-        <div className="label hidden items-center gap-0.5 rounded-full bg-cloud/90 p-1 backdrop-blur lg:flex">
+        <div className="label absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 rounded-full bg-cloud/90 p-1 backdrop-blur lg:flex">
           {[["The problem", "#idea"], ["Why HikeUp", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["AI assistant", "#ai"], ["Community", "#crew"]].map(([l, h]) => (
             <a key={l} href={h} className="rounded-full px-3 py-1.5 transition-colors hover:bg-violet hover:text-cloud">{l}</a>
           ))}
-          <a href="#join" className="rounded-full bg-orange px-3 py-1.5 text-cloud transition-colors hover:bg-violet">Join the crew</a>
+          <a href="#join" className="rounded-full px-3 py-1.5 transition-colors hover:bg-violet hover:text-cloud">Join the crew</a>
         </div>
         <a href="#join" className="label rounded-full bg-orange px-4 py-2 text-cloud transition-transform hover:scale-105 lg:hidden">Join the crew</a>
       </nav>
