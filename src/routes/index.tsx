@@ -36,8 +36,6 @@ function useReveal() {
   }, []);
 }
 
-const PROTO = "https://www.figma.com/proto/aFokBOqJ1J0urWrdi1PRg0/Victoria-Lindenberg?node-id=878-1198&starting-point-node-id=878%3A1198&scaling=min-zoom&content-scaling=fixed&page-id=369%3A379";
-
 const Btn = ({ href, children, tone = "lime", external }: { href: string; children: ReactNode; tone?: "lime" | "ink" | "outline" | "cloud"; external?: boolean }) => {
   const s = { lime: "bg-lime text-ink", ink: "bg-ink text-cloud", cloud: "bg-cloud text-ink", outline: "border-2 border-current" }[tone];
   return (
@@ -62,14 +60,14 @@ function Index() {
       </nav>
 
       {/* HERO */}
-      <section className="bg-cloud px-5 pb-24 pt-28 md:px-10 md:pt-32">
+      <section className="bg-violet px-5 pb-24 pt-28 text-cloud md:px-10 md:pt-32">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <AppIcon size={120} className="h-24 w-24 md:h-[120px] md:w-[120px]" />
             <h1 className="display mt-8 text-6xl md:text-8xl">Hiking is better together.</h1>
-            <p className="display mt-6 text-3xl text-violet md:text-4xl">Find your people. <span className="italic">Find your trail.</span></p>
+            <p className="display mt-6 text-3xl text-lime md:text-4xl">Find your people. <span className="italic">Find your trail.</span></p>
             <p className="mt-6 max-w-lg text-lg md:text-xl">HikeUp is the social hiking app that helps you find people to hike with and the right trail for you.</p>
-            <div className="mt-8 flex flex-wrap gap-3"><Btn href="#join" tone="ink">Join the crew</Btn><Btn href={PROTO} tone="outline" external>View the prototype</Btn></div>
+            <div className="mt-8 flex flex-wrap gap-3"><Btn href="#join" tone="lime">Join the crew</Btn></div>
           </div>
           <div className="lg:col-span-6">
             <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-[2rem] object-cover" />
@@ -94,8 +92,8 @@ function Index() {
       </section>
 
       {/* BENEFITS */}
-      <section id="features" className="bg-cloud px-5 py-24 md:px-10">
-        <span className="label text-violet">Benefits</span>
+      <section id="features" className="bg-orange px-5 py-24 text-ink md:px-10">
+        <span className="label text-ink">Benefits</span>
         <h2 className="display mt-4 text-5xl md:text-7xl">Why HikeUp</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {[
@@ -112,7 +110,7 @@ function Index() {
       </section>
 
       {/* HOW */}
-      <section id="how" className="bg-cloud px-5 pb-24 md:px-10">
+      <section id="how" className="bg-cloud px-5 py-24 md:px-10">
         <span className="label text-violet">How it works</span>
         <h2 className="display mt-4 text-5xl md:text-7xl">Three steps to the trail</h2>
         <div className="mt-12 space-y-6">
@@ -127,7 +125,7 @@ function Index() {
                 <h3 className="display mt-3 text-4xl md:text-6xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg">{s.d}</p>
               </div>
-              <div className="flex justify-center"><Phone notch={!s.noNotch}><ImgScreen img={s.img} alt={s.alt} /></Phone></div>
+              <div className="flex justify-center"><Phone notch={!s.noNotch} tilt={i % 2 ? 4 : -4}><ImgScreen img={s.img} alt={s.alt} /></Phone></div>
             </div>
           ))}
         </div>
@@ -147,7 +145,7 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="flex justify-center lg:col-span-5"><Phone><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone></div>
+          <div className="flex justify-center lg:col-span-5"><Phone tilt={4}><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone></div>
         </div>
       </section>
 
@@ -158,35 +156,22 @@ function Index() {
           <h2 className="display mt-4 text-5xl md:text-7xl">Your trail in your pocket</h2>
         </div>
         <div className="mx-auto mt-14 grid max-w-6xl grid-cols-2 justify-items-center gap-4 md:gap-8 lg:grid-cols-4">
-          {[[homeA.url, "HikeUp home screen"], [joinSearchA.url, "Hike search results"], [joinDetailA.url, "Hike details with join button"], [youreInA.url, "You're in confirmation screen"]].map((x) => x as [string, string]).map(([img, alt]) => (
-            <Phone key={alt} notch={false} className="!w-full max-w-[16rem]"><ImgScreen img={img} alt={alt} /></Phone>
+          {[[homeA.url, "HikeUp home screen"], [joinSearchA.url, "Hike search results"], [joinDetailA.url, "Hike details with join button"], [youreInA.url, "You're in confirmation screen"]].map((x) => x as [string, string]).map(([img, alt], i) => (
+            <Phone key={alt} notch={false} tilt={i % 2 ? 4 : -4} className="!w-full max-w-[16rem]"><ImgScreen img={img} alt={alt} /></Phone>
           ))}
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      <section id="proof" className="bg-cloud px-5 py-24 md:px-10">
-        <span className="label text-violet">Why it matters</span>
-        <h2 className="display mt-4 text-5xl md:text-7xl">Hikers want company</h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <figure className="reveal rounded-[2rem] bg-ink p-8 text-cloud md:p-10">
-            <p className="display text-6xl text-lime">Top 3</p>
-            <p className="mt-4 text-lg">Hiking is one of the 3 most practised sports in Spain: 24.9% of people who did sport in the last year went hiking.</p>
-            <figcaption className="mt-6 text-xs text-cloud/60">Source: Encuesta de Hábitos Deportivos en España 2024/25, Ministerio de Educación, FP y Deportes</figcaption>
-          </figure>
-          <figure className="reveal rounded-[2rem] bg-violet p-8 text-cloud md:p-10">
-            <p className="display text-6xl text-lime">2/3</p>
-            <p className="mt-4 text-lg">2/3 of Appalachian Trail thru-hikers started the trail solo, and 51% were hiking with friends they made on the trail by the end.</p>
-            <figcaption className="mt-6 text-xs text-cloud/70">Source: The Trek, 2023 Appalachian Trail Thru-Hiker Survey, 409 hikers</figcaption>
-          </figure>
-          <figure className="reveal rounded-[2rem] bg-lime p-8 text-ink md:p-10">
-            <blockquote className="display text-3xl italic md:text-4xl">“Hiking buddies can be hard to come by”</blockquote>
-            <figcaption className="mt-6 text-xs text-ink/60">Source: Explorer Chick, 2024</figcaption>
-          </figure>
-          <figure className="reveal rounded-[2rem] bg-orange p-8 text-ink md:p-10">
-            <blockquote className="display text-3xl italic md:text-4xl">“Once upon a time, I didn't hike because I didn't have friends who hiked.”</blockquote>
-            <figcaption className="mt-6 text-xs text-ink/70">Source: Jan McEwen, Gossamer Gear blog, 2014</figcaption>
-          </figure>
+      {/* QUOTES */}
+      <section id="proof" className="bg-cloud px-5 py-20 text-ink md:px-10 md:py-28">
+        <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-2 md:gap-16">
+          {[["Hiking buddies can be hard to come by.", "Explorer Chick"], ["Once upon a time, I didn't hike because I didn't have friends who hiked.", "Jan McEwen, hiker"]].map(([t, n]) => (
+            <figure key={n} className="reveal">
+              <span aria-hidden className="display block text-8xl leading-none text-lime">“</span>
+              <blockquote className="display -mt-6 text-3xl italic md:text-4xl">{t}</blockquote>
+              <figcaption className="mt-6 text-sm font-bold">{n}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
@@ -218,7 +203,6 @@ function Index() {
             <a href="#how" className="hover:text-lime">How it works</a>
             <a href="#features" className="hover:text-lime">Features</a>
             <a href="#join" className="hover:text-lime">Join</a>
-            <a href={PROTO} target="_blank" rel="noopener noreferrer" className="hover:text-lime">View the prototype</a>
           </div>
         </div>
         <p className="mt-10 text-xs text-cloud/60">© 2026 HikeUp · Applied Technology · BA Business Design</p>

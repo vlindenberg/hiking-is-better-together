@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 
-export function Phone({ children, className = "", notch = true }: { children: ReactNode; className?: string; notch?: boolean }) {
+export function Phone({ children, className = "", notch = true, tilt = 0 }: { children: ReactNode; className?: string; notch?: boolean; tilt?: number }) {
+  const t = tilt < 0 ? "-rotate-[4deg]" : tilt > 0 ? "rotate-[4deg]" : "";
   return (
-    <div className={`relative aspect-[9/19] w-56 shrink-0 rounded-[2.4rem] bg-ink p-2 shadow-2xl transition-transform duration-500 md:w-64 ${className}`}>
+    <div tabIndex={0} className={`relative aspect-[9/19] w-56 shrink-0 cursor-pointer rounded-[2.4rem] bg-ink p-2 shadow-2xl transition-transform duration-500 ease-out hover:-translate-y-4 hover:rotate-0 hover:scale-105 active:-translate-y-4 active:rotate-0 active:scale-105 focus:-translate-y-4 focus:rotate-0 focus:scale-105 focus:outline-none md:w-64 ${t} ${className}`}>
       {notch && <div className="absolute left-1/2 top-3 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-ink" />}
       <div className="h-full w-full overflow-hidden rounded-[2rem] bg-cloud text-ink">{children}</div>
     </div>
