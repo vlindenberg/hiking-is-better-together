@@ -75,8 +75,6 @@ function Index() {
 
       {/* HERO */}
       <section className="relative min-h-screen overflow-hidden bg-cloud pt-24">
-        <div className="absolute -right-24 top-20 h-[30rem] w-[30rem] rounded-full bg-orange md:h-[44rem] md:w-[44rem]" />
-        <div className="absolute -left-20 -bottom-16 h-56 w-56 rotate-12 bg-violet lg:-bottom-24 lg:-left-28" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
         <div className="relative px-5 md:px-10">
           <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
@@ -120,8 +118,6 @@ function Index() {
 
       {/* BENEFITS */}
       <section id="benefits" className="relative overflow-hidden bg-orange px-5 py-28 text-ink md:px-10">
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-lime md:h-96 md:w-96" />
-        <div className="absolute -bottom-16 -left-16 h-48 w-48 rotate-12 bg-violet" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
         <div className="relative">
           <span className="label">02 — Benefits</span>
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span><span className="text-cloud">?</span></h2>
@@ -159,6 +155,14 @@ function Index() {
                 <span className="label">Step {s.n}</span>
                 <h3 className="tech mt-3 text-5xl [overflow-wrap:anywhere] md:text-6xl xl:text-7xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
+                {i === 0 && (
+                  <div className="mt-6">
+                    <span className="label">For every level</span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {[["Beginner", "bg-ink text-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-ink"]].map(([l, c]) => <span key={l} className={`label rounded-full px-4 py-3 ${c}`}>{l}</span>)}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="relative flex justify-center lg:col-span-5"><Phone className={s.rot} notch={!s.noNotch}>{s.screen}</Phone></div>
             </div>
@@ -168,8 +172,6 @@ function Index() {
 
       {/* SHOWCASE */}
       <section id="app" className="relative overflow-hidden bg-violet py-28 text-cloud">
-        <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/90" />
-        <div className="absolute left-[10%] top-[20%] h-40 w-40 rounded-full bg-lime lg:left-[6%] lg:top-[62%]" />
         <div className="relative px-5 text-center md:px-10">
           <span className="label text-lime">04 — The app</span>
           <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
@@ -205,9 +207,8 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="relative flex justify-center lg:col-span-5">
-            <div className="absolute h-80 w-80 rounded-full bg-violet" />
-            <span className="display absolute -top-10 right-0 text-[10rem] italic text-violet">AI</span>
+          <div className="relative flex flex-col items-center lg:col-span-5">
+            <span className="display relative z-20 -mb-8 self-end text-[8rem] italic leading-none text-violet md:text-[10rem]">AI</span>
             <Phone className="rotate-6 md:scale-110"><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone>
           </div>
         </div>
@@ -220,9 +221,6 @@ function Index() {
           <img src={c2} alt="Two friends laughing in a hailstorm" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
           <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
             <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
-            <div className="flex flex-wrap gap-2 text-center">
-              {[["Beginners", "bg-lime"], ["Intermediate", "bg-violet text-cloud"], ["Expert", "bg-orange text-cloud"]].map(([l, c]) => <div key={l} className={`label flex-1 whitespace-nowrap px-4 py-4 text-xs ${c}`}>{l}</div>)}
-            </div>
           </div>
           <div className="relative md:col-span-5 md:col-start-2">
             <img src={c1} alt="A big hiking group in the forest" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-t-full object-cover" />
@@ -237,7 +235,6 @@ function Index() {
 
       {/* SOCIAL PROOF — real quotes from hikers */}
       <section id="voices" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
-        <div className="absolute -right-20 top-10 h-56 w-56 rounded-full bg-violet md:h-72 md:w-72" />
         <div className="relative grid gap-16 md:grid-cols-2 md:gap-12">
           {[
             { q: "Hiking buddies can be hard to come by.", n: "Explorer Chick", r: "md:-rotate-1" },
@@ -254,8 +251,6 @@ function Index() {
 
       {/* CTA */}
       <section id="cta" className="relative overflow-hidden bg-orange px-5 py-32 text-cloud md:px-10">
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-lime" />
-        <div className="absolute -bottom-20 left-10 h-64 w-64 rotate-45 bg-violet" />
         <div className="relative text-center">
           <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
           <p className="tech reveal mt-6 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
@@ -266,11 +261,6 @@ function Index() {
 
       {/* JOIN THE CREW — lead form */}
       <section id="join" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
-        <div className="absolute -left-24 top-8 h-64 w-64 rounded-full bg-violet" />
-        <div
-          className="absolute -right-10 bottom-6 h-52 w-52 rotate-12 bg-orange"
-          style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }}
-        />
         <div className="relative grid items-center gap-12 md:grid-cols-12">
           <div className="reveal md:col-span-6">
             <span className="label text-lime">06 — Join the crew</span>
