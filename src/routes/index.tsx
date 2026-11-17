@@ -179,7 +179,7 @@ function SiteNav() {
               <a
                 href={h}
                 onClick={() => setOpen(false)}
-                className="display block text-5xl uppercase transition-colors hover:text-lime md:text-7xl"
+                className="display block text-4xl uppercase transition-colors hover:text-lime md:text-6xl"
               >
                 {l}
               </a>
