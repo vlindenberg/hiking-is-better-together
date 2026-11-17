@@ -79,16 +79,16 @@ function Index() {
           <h1 className="display relative z-20 text-[19vw] uppercase md:text-[13vw]">
             Hiking<br /><span className="ml-[8vw] italic">is better</span>
           </h1>
-          <div className="relative -mt-[4vw] grid gap-8 lg:grid-cols-12">
-            <div className="relative z-10 mt-6 lg:col-span-7 lg:col-start-5 lg:mt-0">
-              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
+          <div className="relative mt-8 grid items-end gap-8 lg:mt-4 lg:grid-cols-12">
+            <div className="relative z-10 lg:col-span-7 lg:col-start-5">
+              <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1920} height={1282} className="aspect-[3/2] w-full rounded-[2.5rem] object-cover object-[55%_70%] shadow-2xl" />
             </div>
             <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
               <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
               <div className="flex flex-wrap gap-3"><Btn href="#app" tone="ink">Discover the app</Btn><Btn href="#how" tone="outline">How it works</Btn></div>
             </div>
           </div>
-          <h1 className="tech relative z-20 mt-6 text-right lg:-mt-[6vw] text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
+          <h1 className="tech relative z-20 mt-6 text-right text-[13vw] text-violet md:text-[12vw]">TOGETHER.</h1>
         </div>
       </section>
 
@@ -149,9 +149,11 @@ function Index() {
             { n: "03", t: "Create your own adventure", d: "Organise a hike, choose your route and invite others to join you.", bg: "bg-orange text-cloud", screen: <ImgScreen img={createA.url} alt="Create a hike form" />, rot: "rotate-3", noNotch: true },
           ].map((s, i) => (
             <div key={s.n} className={`reveal group relative grid items-center gap-8 overflow-hidden px-6 py-12 lg:grid-cols-12 md:px-12 ${s.bg} ${i % 2 ? "md:ml-[10%]" : "md:mr-[10%]"}`}>
-              <span className="display absolute -right-4 -top-16 text-[16rem] italic opacity-20 transition-transform duration-700 group-hover:-translate-x-10 md:text-[22rem]">{s.n}</span>
               <div className={`relative z-10 min-w-0 lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`}>
-                <span className="label">Step {s.n}</span>
+                <div className="flex items-end gap-3">
+                  <span className="label mb-3">Step</span>
+                  <span className={`display text-8xl italic leading-none md:text-9xl ${["text-violet", "text-lime", "text-ink"][i]}`}>{s.n}</span>
+                </div>
                 <h3 className="tech mt-3 text-5xl [overflow-wrap:anywhere] md:text-6xl xl:text-7xl">{s.t}</h3>
                 <p className="mt-4 max-w-md text-lg font-medium">{s.d}</p>
                 {i === 0 && (
@@ -250,7 +252,7 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="relative overflow-hidden bg-orange px-5 py-32 text-cloud md:px-10">
+      <section id="cta" className="relative overflow-hidden bg-violet px-5 py-32 text-cloud md:px-10">
         <div className="relative text-center">
           <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
           <p className="tech reveal mt-6 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
