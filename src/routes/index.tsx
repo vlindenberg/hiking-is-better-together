@@ -154,7 +154,7 @@ function SiteNav() {
           <AppIcon size={26} />HikeUp
         </a>
         <div className="flex items-center gap-2">
-          <a href="#join" onClick={() => setOpen(false)} className="label hidden rounded-full bg-orange px-4 py-2.5 text-cloud transition-transform hover:scale-105 sm:inline-block">Join the crew</a>
+          <a href="#join" onClick={() => setOpen(false)} className="label hidden rounded-full bg-cloud px-4 py-2.5 text-ink transition-transform hover:scale-105 sm:inline-block">Join the crew</a>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -363,8 +363,7 @@ function Index() {
       {/* CTA */}
       <section id="cta" className="relative overflow-hidden bg-violet px-5 py-32 text-cloud md:px-10">
         <div className="relative text-center">
-          <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br /><span className="italic">adventure</span><br />starts with</h2>
-          <p className="tech reveal mt-6 inline-block -rotate-3 bg-ink px-6 py-2 text-[18vw] text-lime md:text-[12vw]">a hello.</p>
+          <h2 className="display reveal text-[14vw] uppercase md:text-[10vw]">Your next<br />adventure<br />starts with<br /><span className="text-lime">a hello.</span></h2>
           <p className="mx-auto mt-10 max-w-md text-xl font-semibold">Find your hiking crew and discover where the trail takes you.</p>
           <div className="mt-10"><Btn href="#app">Discover the app</Btn></div>
         </div>
