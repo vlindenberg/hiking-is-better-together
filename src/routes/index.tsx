@@ -234,8 +234,8 @@ function Index() {
       <section id="voices" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
         <div className="relative grid gap-16 md:grid-cols-2 md:gap-12">
           {[
-            { q: "Hiking buddies can be hard to come by.", n: "Explorer Chick", r: "md:-rotate-1" },
-            { q: "Once upon a time, I didn't hike because I didn't have friends who hiked.", n: "Jan McEwen, hiker", r: "md:rotate-1 md:mt-24" },
+            { q: "I moved to a new city and knew nobody. Two weeks on HikeUp and I already have a Sunday hiking crew.", n: "Laura, 24 · beginner hiker", r: "md:-rotate-1" },
+            { q: "The AI found me a trail I'd never heard of, and I got to hike it with five new friends. Best Saturday in ages.", n: "Marc, 31 · weekend explorer", r: "md:rotate-1 md:mt-24" },
           ].map((v) => (
             <figure key={v.n} className={`reveal ${v.r}`}>
               <span aria-hidden className="display block text-[8rem] leading-none text-lime">“</span>
@@ -244,6 +244,7 @@ function Index() {
             </figure>
           ))}
         </div>
+        <p className="label relative mt-16 text-xs text-cloud/50">Example reviews · HikeUp is a concept app</p>
       </section>
 
       {/* CTA */}
