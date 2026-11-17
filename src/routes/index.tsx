@@ -82,7 +82,6 @@ function Index() {
           <div className="relative -mt-[4vw] grid gap-8 lg:grid-cols-12">
             <div className="relative z-10 mt-6 lg:col-span-7 lg:col-start-5 lg:mt-0">
               <img src={hero} alt="Friends hiking up a grassy hill above the sea" width={1600} height={1104} className="aspect-[16/11] w-full rounded-t-full object-cover shadow-2xl" />
-              <span className="spin-slow tech absolute -top-12 right-2 grid h-28 w-28 md:-right-8 md:top-1/3 lg:h-32 lg:w-32 place-items-center rounded-full bg-lime text-center text-xs md:text-sm">✳ meet ✳<br />your crew</span>
             </div>
             <div className="relative z-20 flex flex-col justify-end gap-6 lg:col-span-4 lg:row-start-1 lg:pb-10">
               <p className="text-xl font-semibold leading-snug md:text-2xl">Find your people. Discover new trails. Make every hike an adventure.</p>
@@ -208,7 +207,7 @@ function Index() {
             </div>
           </div>
           <div className="relative flex flex-col items-center lg:col-span-5">
-            <span className="display relative z-20 -mb-8 self-end text-[8rem] italic leading-none text-violet md:text-[10rem]">AI</span>
+            <span className="tech relative z-20 -mb-12 -rotate-6 self-start bg-ink px-6 py-3 text-7xl text-lime shadow-xl md:text-8xl lg:-ml-6">AI</span>
             <Phone className="rotate-6 md:scale-110"><ImgScreen img={aiAssistantA.url} alt="AI hiking assistant" /></Phone>
           </div>
         </div>
@@ -216,17 +215,18 @@ function Index() {
 
       {/* COMMUNITY */}
       <section id="crew" className="bg-cloud px-5 py-28 md:px-10">
-        <h2 className="display reveal text-6xl uppercase md:text-[9vw]">Come for<br />the hike<span className="text-orange">.</span></h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-12">
-          <img src={c2} alt="Two friends laughing in a hailstorm" loading="lazy" width={1280} height={960} className="reveal aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.02] md:col-span-7" />
-          <div className="reveal flex flex-col justify-between gap-6 md:col-span-5">
-            <p className="text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
+        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-12">
+          <div className="reveal md:col-span-5">
+            <h2 className="display text-6xl uppercase md:text-[7vw]">Come for<br />the hike<span className="text-orange">.</span></h2>
+            <p className="mt-8 max-w-md text-xl font-medium">HikeUp isn't just about finding trails. It's about the stranger who becomes your summit buddy, the shared snacks, the stories on the way down — making the outdoors open to everyone.</p>
           </div>
-          <div className="relative md:col-span-5 md:col-start-2">
-            <img src={c1} alt="A big hiking group in the forest" loading="lazy" width={1024} height={1280} className="reveal aspect-[4/5] w-full rounded-t-full object-cover" />
-          </div>
-          <div className="flex items-end md:col-span-6">
-            <h2 className="display reveal text-6xl uppercase md:text-[8vw]"><span className="italic text-violet">Stay for</span><br />the people.</h2>
+          <img src={c2} alt="Two friends laughing under a rock in a hailstorm" loading="lazy" width={1920} height={1281} className="reveal aspect-[3/2] w-full object-cover md:col-span-7 md:rotate-1 transition-transform duration-700 hover:rotate-0" />
+        </div>
+        <div className="mt-20 grid items-center gap-10 md:mt-28 md:grid-cols-12 md:gap-12">
+          <img src={c1} alt="A big group of hikers together in a pine forest" loading="lazy" width={1080} height={1351} className="reveal aspect-[4/5] w-full object-cover md:col-span-5 md:-rotate-1 transition-transform duration-700 hover:rotate-0" />
+          <div className="reveal md:col-span-7">
+            <h2 className="display text-6xl uppercase md:text-[7vw]"><span className="italic text-violet">Stay for</span><br />the people.</h2>
+            <p className="mt-8 max-w-md text-xl font-medium">Every hike ends with new friends — and the next adventure already planned in the group chat.</p>
           </div>
         </div>
       </section>
