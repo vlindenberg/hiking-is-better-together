@@ -6,12 +6,10 @@ import soloA from "@/assets/hikers_pointing.png.asset.json";
 import c1A from "@/assets/hiking_group.png.asset.json";
 import homeA from "@/assets/screen_home.png.asset.json";
 import joinHomeA from "@/assets/screen_join_home.png.asset.json";
-import joinSearchA from "@/assets/screen_join_search.png.asset.json";
 import aiAssistantA from "@/assets/screen_ai_assistant.png.asset.json";
 import joinDetailA from "@/assets/screen_join_detail.png.asset.json";
 import youreInA from "@/assets/screen_youre_in.png.asset.json";
 import createA from "@/assets/screen_create_hike.png.asset.json";
-import createLocA from "@/assets/screen_create_location.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, ImgScreen } from "@/components/Phone";
 import { LeadForm } from "@/components/LeadForm";
@@ -131,23 +129,75 @@ function AiDemo() {
   );
 }
 
+const NAV_LINKS: [string, string][] = [
+  ["The problem", "#idea"],
+  ["Why HikeUp", "#benefits"],
+  ["How it works", "#how"],
+  ["The app", "#app"],
+  ["AI assistant", "#ai"],
+  ["Community", "#crew"],
+  ["Join the crew", "#join"],
+];
+
+function SiteNav() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  return (
+    <>
+      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-3 md:px-10">
+        <a href="#" onClick={() => setOpen(false)} className="tech flex items-center gap-2 rounded-full bg-ink py-1 pl-1 pr-3 text-base text-cloud">
+          <AppIcon size={26} />HikeUp
+        </a>
+        <div className="flex items-center gap-2">
+          <a href="#join" onClick={() => setOpen(false)} className="label hidden rounded-full bg-orange px-4 py-2.5 text-cloud transition-transform hover:scale-105 sm:inline-block">Join the crew</a>
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full bg-ink text-cloud transition-transform hover:scale-105"
+          >
+            <span className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-current transition-opacity duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+          </button>
+        </div>
+      </nav>
+      <div
+        id="site-menu"
+        className={`fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-ink px-5 pb-10 pt-28 text-cloud transition-all duration-500 md:px-10 ${open ? "visible opacity-100" : "invisible opacity-0"}`}
+      >
+        <ul className="space-y-1">
+          {NAV_LINKS.map(([l, h], i) => (
+            <li key={l}>
+              <a
+                href={h}
+                onClick={() => setOpen(false)}
+                className={`display block text-5xl uppercase transition-colors hover:text-lime md:text-7xl ${i === NAV_LINKS.length - 1 ? "text-orange" : ""}`}
+              >
+                {l}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="display mt-10 text-2xl italic text-lime">Find your people. Find your trail.</p>
+      </div>
+    </>
+  );
+}
+
 function Index() {
   useReveal();
   return (
     <main className="overflow-x-clip">
       {/* NAV */}
-      <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-3 md:px-10">
-        <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink py-1 pl-1 pr-3 text-base text-cloud">
-          <AppIcon size={26} />HikeUp
-        </a>
-        <div className="label absolute left-1/2 hidden w-max -translate-x-1/2 items-center gap-0.5 rounded-full bg-cloud/90 p-1 backdrop-blur xl:flex">
-          {[["The problem", "#idea"], ["Why HikeUp", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["AI assistant", "#ai"], ["Community", "#crew"]].map(([l, h]) => (
-            <a key={l} href={h} className="whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:bg-violet hover:text-cloud">{l}</a>
-          ))}
-          <a href="#join" className="whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:bg-violet hover:text-cloud">Join the crew</a>
-        </div>
-        <a href="#join" className="label rounded-full bg-orange px-4 py-2 text-cloud transition-transform hover:scale-105 xl:hidden">Join the crew</a>
-      </nav>
+      <SiteNav />
 
       {/* HERO */}
       <section className="relative min-h-screen overflow-hidden bg-ink pt-24 text-cloud">
@@ -170,8 +220,7 @@ function Index() {
       <section id="idea" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
         <div className="grid items-center gap-10 md:grid-cols-12">
           <div className="reveal md:col-span-7">
-            <span className="label text-orange">01 — The problem</span>
-            <h2 className="display mt-6 text-7xl uppercase md:text-[9vw]">Love hiking.<br /><span className="italic">Don't have</span><br />a crew?</h2>
+            <h2 className="display text-7xl uppercase md:text-[9vw]">Love hiking.<br /><span className="italic">Don't have</span><br />a crew?</h2>
           </div>
           <div className="reveal relative md:col-span-5">
             <img src={solo} alt="Hikers on a mountain trail" loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover" />
@@ -181,17 +230,14 @@ function Index() {
           </div>
         </div>
         <div className="reveal mt-32 text-center">
-          <span className="label text-lime">The idea</span>
-          <p className="display mt-4 text-5xl md:text-8xl">Meet the app that <span className="italic text-lime">brings hikers</span> <span className="tech inline-block rotate-2 bg-violet px-4 text-cloud">TOGETHER</span></p>
-          <p className="mx-auto mt-8 max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
+          <p className="mx-auto max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
         </div>
       </section>
 
       {/* BENEFITS */}
       <section id="benefits" className="relative overflow-hidden bg-orange px-5 py-28 text-ink md:px-10">
         <div className="relative">
-          <span className="label">02 — Benefits</span>
-          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span>?</h2>
+          <h2 className="display reveal text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span>?</h2>
           <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-6">
             {[
               { n: "01", t: "Connect", d: "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", c: "bg-violet text-cloud", r: "md:-rotate-2" },
@@ -212,8 +258,7 @@ function Index() {
       <section id="how" className="bg-cloud px-5 py-28 md:px-10">
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="label">03 — How it works</span>
-            <h2 className="display mt-4 text-7xl uppercase md:text-[10vw]">How it<br /><span className="italic">works</span></h2>
+            <h2 className="display text-7xl uppercase md:text-[10vw]">How it<br /><span className="italic">works</span></h2>
           </div>
           <span className="label max-w-xs">Three moves. Endless trails. Zero hiking alone.</span>
         </div>
@@ -247,18 +292,13 @@ function Index() {
       {/* SHOWCASE */}
       <section id="app" className="relative overflow-hidden bg-violet py-28 text-cloud">
         <div className="relative px-5 text-center md:px-10">
-          <span className="label text-lime">04 — The app</span>
-          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[11vw]">Your trail<br /><span className="italic">in your pocket</span></h2>
+          <h2 className="display reveal text-7xl uppercase md:text-[11vw]">Your trail<br />in your pocket</h2>
         </div>
         <div className="relative mt-16 flex flex-wrap items-center justify-center gap-6 px-4 lg:-space-x-10 lg:gap-0">
           <Phone className="float -rotate-12 lg:translate-y-16" ><ImgScreen img={homeA.url} alt="HikeUp home screen" /></Phone>
-          <Phone className="rotate-6 lg:-translate-y-6"><ImgScreen img={joinSearchA.url} alt="Hike search results" /></Phone>
           <Phone className="z-10 -rotate-3 lg:scale-110"><ImgScreen img={joinDetailA.url} alt="Hike details with join button" /></Phone>
           <Phone className="rotate-12 lg:translate-y-10"><ImgScreen img={youreInA.url} alt="You're in confirmation screen" /></Phone>
-        </div>
-        <div className="relative mt-10 flex flex-wrap items-center justify-center gap-6 px-4 md:gap-16">
-          <Phone className="-rotate-6" notch={false}><ImgScreen img={createA.url} alt="Create a hike form" /></Phone>
-          <Phone className="rotate-6" notch={false}><ImgScreen img={createLocA.url} alt="Choose the hike location on a map" /></Phone>
+          <Phone className="-rotate-6 lg:-translate-y-4" notch={false}><ImgScreen img={createA.url} alt="Create a hike form" /></Phone>
         </div>
         <div className="relative mt-16 flex flex-wrap justify-center gap-3 px-5">
           {["Home", "Explore & join", "AI assistant", "Hike details", "Create a hike"].map((l) => (
@@ -271,8 +311,7 @@ function Index() {
       <section id="ai" className="relative overflow-hidden bg-lime px-5 py-28 md:px-10">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="reveal lg:col-span-7">
-            <span className="label">05 — Trail AI</span>
-            <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go?</h2>
+            <h2 className="display text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go?</h2>
             <p className="tech mt-6 text-4xl text-violet md:text-6xl">Let AI find your next adventure.</p>
             <p className="mt-8 max-w-lg text-lg font-medium">Describe the hike you're craving. Our assistant recommends routes that match — and uncovers hidden alternatives beyond the most crowded trails.</p>
             <AiDemo />
