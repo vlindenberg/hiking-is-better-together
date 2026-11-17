@@ -99,7 +99,8 @@ export function LeadForm() {
         {status === "sending" ? "Joining…" : "Join the crew"}
       </button>
       <p className="mt-4 text-center text-xs font-medium text-ink/50">
-        One email a month. No spam, unsubscribe anytime.
+        One email a month. No spam, unsubscribe anytime.{" "}
+        <a href="#privacy" className="underline underline-offset-2 hover:text-ink">Privacy</a>
       </p>
     </form>
   );

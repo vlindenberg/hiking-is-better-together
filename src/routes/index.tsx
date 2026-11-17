@@ -401,11 +401,29 @@ function Index() {
             <a href="#" className="tech flex items-center gap-3 text-4xl"><AppIcon size={48} />HikeUp</a>
             <p className="display mt-4 text-2xl italic text-lime">Find your people. Find your trail.</p>
           </div>
-          <nav aria-label="Footer" className="label grid grid-cols-2 gap-x-10 gap-y-3 text-cloud/80">
-            {[["The problem", "#idea"], ["Why HikeUp", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["AI assistant", "#ai"], ["Community", "#crew"], ["Join the crew", "#join"]].map(([l, h]) => (
-              <a key={l} href={h} className="transition-colors hover:text-lime">{l}</a>
-            ))}
-          </nav>
+          <div className="flex flex-wrap gap-x-16 gap-y-10">
+            <div>
+              <p className="label text-lime">Explore</p>
+              <nav aria-label="Footer" className="label mt-4 grid grid-cols-2 gap-x-10 gap-y-3 text-cloud/80">
+                {NAV_LINKS.map(([l, h]) => (
+                  <a key={l} href={h} className="transition-colors hover:text-lime">{l}</a>
+                ))}
+              </nav>
+            </div>
+            <div>
+              <p className="label text-lime">Contact</p>
+              <ul className="mt-4 space-y-3 font-medium text-cloud/80">
+                <li>Email: coming soon</li>
+                <li>Barcelona, Spain</li>
+              </ul>
+            </div>
+            <div id="privacy" className="max-w-xs">
+              <p className="label text-lime">Privacy</p>
+              <p className="mt-4 text-sm font-medium text-cloud/80">
+                We only use your email to send you HikeUp news and early access. We never share or sell it, and you can unsubscribe anytime.
+              </p>
+            </div>
+          </div>
         </div>
         <p className="label mt-12 text-cloud/50">© 2026 HikeUp · Hiking is better together</p>
       </footer>
