@@ -15,6 +15,7 @@ import createLocA from "@/assets/screen_create_location.png.asset.json";
 const hero = heroA.url, c2 = c2A.url, solo = soloA.url, c1 = c1A.url;
 import { Phone, ImgScreen } from "@/components/Phone";
 import { LeadForm } from "@/components/LeadForm";
+import { AppIcon } from "@/components/AppIcon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,8 +62,8 @@ function Index() {
     <main className="overflow-x-clip">
       {/* NAV */}
       <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-4 md:px-10">
-        <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xl text-cloud">
-          <span className="h-3 w-3 rounded-full bg-lime" />HikeUp
+        <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink py-1.5 pl-1.5 pr-4 text-xl text-cloud">
+          <AppIcon size={32} />HikeUp
         </a>
         <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur md:flex">
           {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"], ["Join", "#join"]].map(([l, h]) => (
@@ -114,6 +115,29 @@ function Index() {
           <span className="label text-lime">The idea</span>
           <p className="display mt-4 text-5xl md:text-8xl">Meet the app that <span className="italic text-orange">brings hikers</span> <span className="tech inline-block rotate-2 bg-violet px-4 text-cloud">TOGETHER</span></p>
           <p className="mx-auto mt-8 max-w-xl text-lg text-cloud/70">Like ride-sharing, but for trails. Someone's already planning the hike you want. Just say hi and join.</p>
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section id="benefits" className="relative overflow-hidden bg-orange px-5 py-28 text-ink md:px-10">
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-lime md:h-96 md:w-96" />
+        <div className="absolute -bottom-16 -left-16 h-48 w-48 rotate-12 bg-violet" style={{ clipPath: "polygon(50% 0,100% 100%,0 100%)" }} />
+        <div className="relative">
+          <span className="label">02 — Benefits</span>
+          <h2 className="display reveal mt-4 text-7xl uppercase md:text-[9vw]">Why <span className="italic">HikeUp</span><span className="text-cloud">?</span></h2>
+          <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-6">
+            {[
+              { n: "01", t: "Connect", d: "Find hiking partners who share your passion, so you never miss a hike because nobody is free.", c: "bg-violet text-cloud", r: "md:-rotate-2" },
+              { n: "02", t: "Discover", d: "Explore new trails and get personalised suggestions from the AI hiking assistant.", c: "bg-lime text-ink", r: "md:rotate-1 md:translate-y-8" },
+              { n: "03", t: "Organise", d: "Create or join a hike in a few taps and plan everything in the group chat.", c: "bg-ink text-cloud", r: "md:-rotate-1" },
+            ].map((b) => (
+              <div key={b.t} className={`reveal min-w-0 p-8 transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] md:p-10 ${b.c} ${b.r}`}>
+                <span className="display text-6xl italic opacity-40">{b.n}</span>
+                <h3 className="tech mt-4 text-4xl [overflow-wrap:anywhere] lg:text-5xl">{b.t}</h3>
+                <p className="mt-4 text-lg font-medium">{b.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -211,6 +235,23 @@ function Index() {
 
       <Marquee text="Say hello · Find your crew" className="rotate-1 bg-violet text-cloud" />
 
+      {/* SOCIAL PROOF — real quotes from hikers */}
+      <section id="voices" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
+        <div className="absolute -right-20 top-10 h-56 w-56 rounded-full bg-violet md:h-72 md:w-72" />
+        <div className="relative grid gap-16 md:grid-cols-2 md:gap-12">
+          {[
+            { q: "Hiking buddies can be hard to come by.", n: "Explorer Chick", r: "md:-rotate-1" },
+            { q: "Once upon a time, I didn't hike because I didn't have friends who hiked.", n: "Jan McEwen, hiker", r: "md:rotate-1 md:mt-24" },
+          ].map((v) => (
+            <figure key={v.n} className={`reveal ${v.r}`}>
+              <span aria-hidden className="display block text-[8rem] leading-none text-lime">“</span>
+              <blockquote className="display -mt-10 text-4xl italic md:text-5xl">{v.q}</blockquote>
+              <figcaption className="label mt-6 inline-block bg-lime px-3 py-2 text-ink">{v.n}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="cta" className="relative overflow-hidden bg-orange px-5 py-32 text-cloud md:px-10">
         <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-lime" />
@@ -255,9 +296,19 @@ function Index() {
         </div>
       </section>
 
-      <footer className="flex flex-wrap items-center justify-between gap-4 bg-ink px-5 py-8 text-cloud md:px-10">
-        <span className="tech text-3xl">HikeUp</span>
-        <span className="label text-cloud/60">Hiking is better together · © 2026</span>
+      <footer className="bg-ink px-5 pb-10 text-cloud md:px-10">
+        <div className="flex flex-wrap items-start justify-between gap-10 border-t border-cloud/15 pt-12">
+          <div>
+            <a href="#" className="tech flex items-center gap-3 text-4xl"><AppIcon size={48} />HikeUp</a>
+            <p className="display mt-4 text-2xl italic text-lime">Find your people. Find your trail.</p>
+          </div>
+          <nav aria-label="Footer" className="label grid grid-cols-2 gap-x-10 gap-y-3 text-cloud/80">
+            {[["The idea", "#idea"], ["Benefits", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["Trail AI", "#ai"], ["Join the crew", "#join"]].map(([l, h]) => (
+              <a key={l} href={h} className="transition-colors hover:text-lime">{l}</a>
+            ))}
+          </nav>
+        </div>
+        <p className="label mt-12 text-cloud/50">© 2026 HikeUp · Hiking is better together · Applied Technology · BA Business Design</p>
       </footer>
     </main>
   );
