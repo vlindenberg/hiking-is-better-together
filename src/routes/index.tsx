@@ -154,7 +154,7 @@ function SiteNav() {
           <AppIcon size={26} />HikeUp
         </a>
         <div className="flex items-center gap-2">
-          <a href="#join" onClick={() => setOpen(false)} className="label hidden rounded-full bg-cloud px-4 py-2.5 text-ink transition-transform hover:scale-105 sm:inline-block">Join the crew</a>
+          <a href="#join" onClick={() => setOpen(false)} className="label hidden rounded-full bg-lime px-4 py-2.5 text-ink transition-transform hover:scale-105 sm:inline-block">Join the crew</a>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
