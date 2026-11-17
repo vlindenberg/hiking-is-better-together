@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import heroA from "@/assets/hikers_hillside.jpeg.asset.json";
 import c2A from "@/assets/hikers_hail.webp.asset.json";
 import soloA from "@/assets/hikers_pointing.png.asset.json";
@@ -55,6 +55,63 @@ const Marquee = ({ text, className }: { text: string; className: string }) => (
     </div>
   </div>
 );
+
+const AI_TRAILS: Record<string, { trail: string; place: string; level: string; time: string; why: string }> = {
+  "Peaceful nature": { trail: "Fageda d'en Jordà", place: "La Garrotxa", level: "Easy", time: "2 h loop", why: "A quiet beech forest growing on an old lava flow. Soft paths, birdsong and almost no climbing." },
+  "Beautiful views": { trail: "Sant Jeroni", place: "Montserrat", level: "Intermediate", time: "3–4 h", why: "The highest point of Montserrat. On a clear day you can see the Pyrenees and the sea." },
+  "A social adventure": { trail: "Carretera de les Aigües", place: "Collserola, Barcelona", level: "Beginner", time: "2–3 h", why: "Flat and wide, so it's easy to walk and talk. A HikeUp group goes every Saturday morning." },
+  "Less crowded": { trail: "Les Agudes", place: "Montseny", level: "Intermediate", time: "4 h", why: "A quieter alternative to Turó de l'Home, with the same mountain views and far fewer people." },
+  "Sunrise summit": { trail: "La Mola", place: "Sant Llorenç del Munt", level: "Intermediate", time: "2 h up", why: "Start in the dark, watch the sun rise over the rocks, and have breakfast at the top." },
+};
+
+function AiDemo() {
+  const [pick, setPick] = useState<string | null>(null);
+  const [thinking, setThinking] = useState(false);
+  const choose = (p: string) => {
+    setPick(p);
+    setThinking(true);
+    window.setTimeout(() => setThinking(false), 700);
+  };
+  const t = pick ? AI_TRAILS[pick] : null;
+  return (
+    <div className="mt-8">
+      <p className="label text-sm">Try it: what are you in the mood for?</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {Object.keys(AI_TRAILS).map((p, i) => (
+          <button
+            key={p}
+            type="button"
+            onClick={() => choose(p)}
+            aria-pressed={pick === p}
+            className={`label cursor-pointer rounded-full px-4 py-3 transition-transform hover:-rotate-3 hover:scale-110 ${pick === p ? "bg-orange text-ink ring-2 ring-ink" : i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}
+          >
+            “{p}”
+          </button>
+        ))}
+      </div>
+      <div aria-live="polite" className="mt-6 max-w-lg">
+        {t && (
+          <div className="rounded-3xl rounded-tl-none bg-ink p-6 text-cloud shadow-xl">
+            <p className="label text-xs text-lime">HikeUp AI</p>
+            {thinking ? (
+              <p className="mt-3 animate-pulse text-lg font-medium">Finding your trail…</p>
+            ) : (
+              <>
+                <p className="display mt-3 text-3xl italic">{t.trail}</p>
+                <p className="mt-1 text-sm font-semibold text-cloud/70">{t.place}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="label rounded-full bg-lime px-3 py-1 text-xs text-ink">{t.level}</span>
+                  <span className="label rounded-full bg-violet px-3 py-1 text-xs text-cloud">{t.time}</span>
+                </div>
+                <p className="mt-4 font-medium">{t.why}</p>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function Index() {
   useReveal();
@@ -197,11 +254,7 @@ function Index() {
             <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go?</h2>
             <p className="tech mt-6 text-4xl text-violet md:text-6xl">Let AI find your next adventure.</p>
             <p className="mt-8 max-w-lg text-lg font-medium">Describe the hike you're craving. Our assistant recommends routes that match — and uncovers hidden alternatives beyond the most crowded trails.</p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["Peaceful nature", "Beautiful views", "A social adventure", "Less crowded", "Sunrise summit"].map((p, i) => (
-                <span key={p} className={`label cursor-default rounded-full px-4 py-3 transition-transform hover:-rotate-3 hover:scale-110 ${i % 2 ? "bg-violet text-cloud" : "bg-ink text-lime"}`}>“{p}”</span>
-              ))}
-            </div>
+            <AiDemo />
           </div>
           <div className="relative flex flex-col items-center lg:col-span-5">
             <span className="tech relative z-20 -mb-12 -rotate-6 self-start bg-ink px-6 py-3 text-7xl text-lime shadow-xl md:text-8xl lg:-ml-6">AI</span>
