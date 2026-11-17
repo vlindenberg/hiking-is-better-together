@@ -65,12 +65,12 @@ function Index() {
         <a href="#" className="tech flex items-center gap-2 rounded-full bg-ink py-1.5 pl-1.5 pr-4 text-xl text-cloud">
           <AppIcon size={32} />HikeUp
         </a>
-        <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur md:flex">
-          {[["Idea", "#idea"], ["How", "#how"], ["App", "#app"], ["AI", "#ai"], ["Crew", "#crew"], ["Join", "#join"]].map(([l, h]) => (
+        <div className="label hidden gap-1 rounded-full bg-cloud/90 p-1 backdrop-blur lg:flex">
+          {[["The problem", "#idea"], ["Why HikeUp", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["AI assistant", "#ai"], ["Community", "#crew"]].map(([l, h]) => (
             <a key={l} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-violet hover:text-cloud">{l}</a>
           ))}
         </div>
-        <a href="#cta" className="label rounded-full bg-orange px-5 py-3 text-cloud transition-transform hover:scale-105">Get the app</a>
+        <a href="#join" className="label rounded-full bg-orange px-5 py-3 text-cloud transition-transform hover:scale-105">Join the crew</a>
       </nav>
 
       {/* HERO */}
@@ -193,7 +193,7 @@ function Index() {
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="reveal lg:col-span-7">
             <span className="label">05 — Trail AI</span>
-            <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go<span className="text-violet">?</span></h2>
+            <h2 className="display mt-6 text-6xl uppercase md:text-[7.5vw]">Not sure<br />where to go?</h2>
             <p className="tech mt-6 text-4xl text-violet md:text-6xl">Let AI find your next adventure.</p>
             <p className="mt-8 max-w-lg text-lg font-medium">Describe the hike you're craving. Our assistant recommends routes that match — and uncovers hidden alternatives beyond the most crowded trails.</p>
             <div className="mt-8 flex flex-wrap gap-2">
@@ -259,8 +259,7 @@ function Index() {
       <section id="join" className="relative overflow-hidden bg-ink px-5 py-28 text-cloud md:px-10">
         <div className="relative grid items-center gap-12 md:grid-cols-12">
           <div className="reveal md:col-span-6">
-            <span className="label text-lime">06 — Join the crew</span>
-            <h2 className="display mt-6 text-6xl uppercase md:text-[6.5vw]">
+            <h2 className="display text-6xl uppercase md:text-[6.5vw]">
               Get the trail
               <br />
               <span className="italic text-lime">in your inbox</span>
@@ -289,7 +288,7 @@ function Index() {
             <p className="display mt-4 text-2xl italic text-lime">Find your people. Find your trail.</p>
           </div>
           <nav aria-label="Footer" className="label grid grid-cols-2 gap-x-10 gap-y-3 text-cloud/80">
-            {[["The idea", "#idea"], ["Benefits", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["Trail AI", "#ai"], ["Join the crew", "#join"]].map(([l, h]) => (
+            {[["The problem", "#idea"], ["Why HikeUp", "#benefits"], ["How it works", "#how"], ["The app", "#app"], ["AI assistant", "#ai"], ["Community", "#crew"], ["Join the crew", "#join"]].map(([l, h]) => (
               <a key={l} href={h} className="transition-colors hover:text-lime">{l}</a>
             ))}
           </nav>
