@@ -211,7 +211,10 @@ function Index() {
       {/* HOW */}
       <section id="how" className="bg-cloud px-5 py-28 md:px-10">
         <div className="reveal flex flex-wrap items-end justify-between gap-6">
-          <h2 className="display text-7xl uppercase md:text-[10vw]">How it<br /><span className="italic">works</span></h2>
+          <div>
+            <span className="label">03 — How it works</span>
+            <h2 className="display mt-4 text-7xl uppercase md:text-[10vw]">How it<br /><span className="italic">works</span></h2>
+          </div>
           <span className="label max-w-xs">Three moves. Endless trails. Zero hiking alone.</span>
         </div>
         <div className="mt-16 space-y-6">
