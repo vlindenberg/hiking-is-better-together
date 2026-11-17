@@ -353,7 +353,7 @@ function Index() {
           ].map((v) => (
             <figure key={v.n} className={`reveal ${v.r}`}>
               <span aria-hidden className="display block text-[8rem] leading-none text-lime">“</span>
-              <blockquote className="display -mt-10 text-4xl italic md:text-5xl">{v.q}</blockquote>
+              <blockquote className="-mt-10 text-3xl font-bold leading-tight md:text-4xl">{v.q}</blockquote>
               <figcaption className="label mt-6 inline-block bg-lime px-3 py-2 text-ink">{v.n}</figcaption>
             </figure>
           ))}
