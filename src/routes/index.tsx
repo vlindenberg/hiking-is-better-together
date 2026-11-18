@@ -107,7 +107,7 @@ function AiDemo() {
       <div aria-live="polite" className="mt-6 max-w-lg">
         {hike && (
           <div className="rounded-3xl rounded-tl-none bg-ink p-6 text-cloud shadow-xl">
-            <p className="label text-xs text-lime">HikeUp AI</p>
+            <p className="label text-xs text-lime">AI hiking assistant</p>
             {thinking ? (
               <p className="mt-3 animate-pulse text-lg font-medium">Finding your adventure…</p>
             ) : (
